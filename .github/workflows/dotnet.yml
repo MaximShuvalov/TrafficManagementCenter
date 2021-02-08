@@ -19,7 +19,7 @@ jobs:
         dotnet-version: 5.0.x
     - name: Restore dependencies
       run: dotnet restore
-	  working-directory: TrafficManagementCenter.Server/TrafficManagementCenter.Server.sln
+      working-directory: TrafficManagementCenter.Server/TrafficManagementCenter.Server.sln
     - name: Build
       run: dotnet build --no-restore
     - name: Test
