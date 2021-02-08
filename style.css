@@ -1,0 +1,143 @@
+*,*::before,*::after{
+   box-sizing: border-box;
+}
+
+html,body{
+   height: 100%;
+   font-family: Century Gothic;;
+}
+
+.container{
+   display: flex;
+   width: 100%;
+   max-width: 1920px;
+   margin: 0 30px;
+}
+
+.header{
+   padding-top: 10px;
+   width: 100%;
+
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 1000;
+}
+
+.header::before{
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: none;
+}
+
+.header__body{
+   position: relative;
+   display: flex;
+   z-index: 2;
+   align-items: center;
+   height: 80px;
+}
+
+.header__logo{
+   flex: 0 0 60px;
+
+}
+
+.header__logo img{
+   max-width: 100%;
+   display: block;
+   top: 30;
+   left: 30;
+}
+
+.header__burger{
+   margin: 0 30px;
+}
+
+.header__menu{
+   display: flex;
+   justify-content: space-between;
+   margin-left: 155px;
+   text-align: center;
+
+
+}
+
+@media(max-width:1920px){
+   .header__burger{
+      display: block;
+      position: relative;
+      width: 30px;
+      height: 20px;
+   }
+
+   .header__burger span{
+      position: absolute;
+      background-color: black;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      top: 9px;
+   }
+
+   .header__burger::after,
+   .header__burger::before{
+      content: '';
+      background-color: black;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      left: 0;
+   }
+   .header__burger::before{
+      top: 0;
+   }
+   .header__burger::after{
+      bottom: 0;
+   }
+}
+
+.header__list{
+   display: flex;
+   justify-content: space-between;
+}
+
+.header__list li{
+   list-style: none;
+   margin:  0px 0px 0px 20px;
+}
+
+.header__link{
+   margin: 0 35px;
+   color: black;
+   text-transform: uppercase;
+   text-decoration: none;
+}
+
+.header__link:hover{
+   font-weight: 700;
+}
+
+/* Intro */
+.intro{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: 100%;
+   height: 70vh;
+}
+
+.intro__subtitle{
+   font-size: 74px;
+   font-weight: 700;
+   color: #223A76;
+}
+
+.intro__title{
+   font-size: 24px;
+}
