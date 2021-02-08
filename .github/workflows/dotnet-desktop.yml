@@ -76,8 +76,6 @@ jobs:
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild path
       uses: microsoft/setup-msbuild@v1.0.0
-      env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
