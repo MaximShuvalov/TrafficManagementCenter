@@ -1,5 +1,5 @@
 *.dll
 *.pdb
 bin/
-.idea/
 obj/
+.idea/
