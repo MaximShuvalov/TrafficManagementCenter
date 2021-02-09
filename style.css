@@ -141,3 +141,37 @@ html,body{
 .intro__title{
    font-size: 24px;
 }
+
+.page2{
+   display: flex;
+   position: absolute;
+   width: 100%;
+   height: 974px;
+   left: 0px;
+   top: 984px;
+   background: rgba(249, 229, 71, 0.02);
+}
+
+.page2_subtitle{
+   position: relative;
+   left: 10%;
+   top: 10px;
+}
+
+.page2_subtitle1{
+   font-family: Century Gothic;
+   font-style: normal;
+   font-weight: normal;
+   font-size: 52px;
+   line-height: 64px;
+   margin: 0px 8px;
+}
+
+.page2_subtitle2{
+   font-family: Century Gothic;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 52px;
+   line-height: 64px;   
+   color: #223A76;
+}
