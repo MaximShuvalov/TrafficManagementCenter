@@ -11,14 +11,14 @@ html,body{
    display: flex;
    width: 100%;
    max-width: 1920px;
-   margin: 0 30px;
+   padding: 0 50px;
 }
 
 .header{
-   padding-top: 10px;
    width: 100%;
 
    position: fixed;
+   background: #eeebeb;
    top: 0;
    left: 0;
    right: 0;
@@ -134,12 +134,14 @@ html,body{
 
 .intro__items{
    display: flex;
-   
    align-items: center;
+   justify-content: space-around;
 }
 
 .intro__text{
-   z-index: 12;
+   display: block;
+   position: relative;
+   z-index:2;
 }
 
 .intro__subtitle{
@@ -154,6 +156,21 @@ html,body{
    margin-top: 5px;
    font-size: 24px;
 }
+
+.intro__images{
+   position: relative;
+   width: 40%;
+}
+
+.intro__images img{
+   display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
 
 .page2{
    display: flex;
@@ -215,12 +232,3 @@ html,body{
    color: #333333;
 }
 
-.intro__images{
-   
-}
-
-.intro__images-1{
-   background: url(../img/Intro/Vector1.jpg);
-}
-.intro__images-2{
-}
