@@ -133,6 +133,7 @@ html,body{
 .intro__items{
    position: relative;
    display: inline-block;
+   align-items: center;
 }
 
 
@@ -148,11 +149,6 @@ html,body{
    margin-top: 5px;
    font-size: 24px;
 }
-
-.intro__images{
-   
-}
-
 
 .intro__images-1{
    position: absolute;
