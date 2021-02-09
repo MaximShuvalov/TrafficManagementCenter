@@ -111,14 +111,16 @@ html,body{
 }
 
 .header__link{
+   display: inline-block;
    margin: 0 35px;
-   color: black;
+   color: rgb(46, 46, 46);
    text-transform: uppercase;
    text-decoration: none;
 }
 
 .header__link:hover{
-   font-weight: 700;
+   color: black;
+   text-decoration: underline;
 }
 
 /* Intro */
@@ -131,11 +133,14 @@ html,body{
 }
 
 .intro__items{
-   position: relative;
-   display: inline-block;
+   display: flex;
+   
    align-items: center;
 }
 
+.intro__text{
+   z-index: 12;
+}
 
 .intro__subtitle{
    margin-bottom: 5px;
@@ -215,7 +220,7 @@ html,body{
 }
 
 .intro__images-1{
-   position: absolute;
+   background: url(../img/Intro/Vector1.jpg);
 }
 .intro__images-2{
 }
