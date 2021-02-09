@@ -184,6 +184,32 @@ html,body{
    color: #223A76;
 }
 
+.page2_body{
+   position: relative;
+   left: 20%;
+   top: 12%;
+   width: 50%;
+}
+
+.page2_body_image{
+   position: relative;
+   width: 100%;
+}
+
+.page2_body_image img{
+   position: relative;
+   width: 100%;
+}
+
+.page2_body a{
+   font-family: Century Gothic;
+   font-style: normal;
+   font-weight: normal;
+   font-size: 30px;
+   line-height: 135%;
+   color: #333333;
+}
+
 .intro__images{
    
 }
