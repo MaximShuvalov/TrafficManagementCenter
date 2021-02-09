@@ -191,6 +191,8 @@ html,body{
 
 .page2_body{
    position: relative;
+   display: block;
+   align-items: center;
    left: 20%;
    top: 12%;
    width: 50%;
@@ -203,15 +205,27 @@ html,body{
 
 .page2_body_image img{
    position: relative;
+   height: 7px;
    width: 100%;
 }
 
-.page2_body a{
+.page2_body_text{
+   position: absolute;
+   top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+   margin: auto;
+   margin-top: 15px;
+   width: 75%;
+}
+
+.page2_body_text a{
    font-family: Century Gothic;
    font-style: normal;
    font-weight: normal;
    font-size: 30px;
-   line-height: 135%;
+   line-height: 40px;
    color: #333333;
 }
 
