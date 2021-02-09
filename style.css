@@ -64,8 +64,6 @@ html,body{
    justify-content: space-between;
    margin-left: 155px;
    text-align: center;
-
-
 }
 
 @media(max-width:1920px){
@@ -132,12 +130,35 @@ html,body{
    height: 70vh;
 }
 
+.intro__items{
+   position: relative;
+   display: inline-block;
+}
+
+
 .intro__subtitle{
+   margin-bottom: 5px;
+
    font-size: 74px;
    font-weight: 700;
    color: #223A76;
 }
 
 .intro__title{
+   margin-top: 5px;
    font-size: 24px;
 }
+
+.intro__images{
+   
+}
+
+
+.intro__images-1{
+   position: absolute;
+}
+.intro__images-2{
+}
+
+
+
