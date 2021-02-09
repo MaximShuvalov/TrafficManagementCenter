@@ -4,7 +4,7 @@
 
 html,body{
    height: 100%;
-   font-family: Century Gothic;;
+   font-family: Century Gothic;
 }
 
 .container{
@@ -261,13 +261,146 @@ html,body{
    left: 10%;
 }
 
-.intro__images{
-   
+/* Information */
+
+.information{
+   display: flex;
+   justify-content: space-between;
+   position: absolute;
+   width: 1942px;
+   height: 1569px;
+   left: 0;
+   top: 2097px;
+
+   background-size: cover;
 }
 
-.intro__images-1{
-   background: url(../img/Intro/Vector1.jpg);
+.information__inner{
+   line-height: 1.5px;
+   margin-left:  10%;
+   width: 30%;
 }
-.intro__images-2{
+
+.contacts__title{
+   margin-top: 10px;
+   font-weight: bold;
+   font-size: 48px;
+   color: #223A76;
 }
+
+.contacts__title::after{
+   content: "";
+   display: block;
+   background: #F9E547;
+   box-shadow: 0px 4px 4px rgba(249, 229, 71, 0.6);
+   border-radius: 5px;
+   width: 200px;
+   height: 5px;
+}
+
+.contacts__infa{
+   margin-top: 20px;
+
+   font-size: 36px;
+   line-height: 40px;
+}
+
+.contacts__email{
+   margin-top: 10px;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 24px;
+   line-height: 29px;
+
+   color: #223A76;
+}
+
+.contacts__text{
+   margin-top: 10px;
+   font-style: normal;
+   font-weight: normal;
+   font-size: 24px;
+   line-height: 29px;
+   width: 90%;
+
+   text-align: justify;
+
+   color: #333333;
+}
+
+.contacts__link{
+   display: flex;
+
+   justify-content: start;
+}
+
+.contacts__link a{
+   font-size: 25px;
+   margin-right: 35px;
+   color: #223A76;
+
+   
+   text-decoration: none;
+}
+
+.contacts__link i{
+   color: #223A76;
+}
+
+.contacts__text span{
+   color: #223A76;
+   font-weight: 700;
+}
+
+
+/* Feedback */
+.feedback{
+   margin-top: 110px;
+   margin-left: 200px;
+   margin-right: 100px;
+   width: 40%;
+}
+
+.feedback__subtetle{
+   text-align: justify;
+
+   font-style: normal;
+   font-weight: bold;
+   font-size: 25px;
+   line-height: 37px;
+
+   color: #223A76;
+}
+
+.feedback__title{
+   margin-top: 10px;
+
+   font-style: normal;
+   font-weight: normal;
+   font-size: 20px;
+   line-height: 29px;
+}
+
+.feedback__inner{
+   margin-bottom: 30px;
+}
+
+.feedback__input{
+   margin-bottom: 5px;
+}
+
+.feedback__input input{
+   font-weight: 200;
+   font-size: 18px;
+   border: 1px solid #223A76;
+   line-height: 28px;
+   margin-bottom: 30px;
+   width: 700px;
+   height: 55px;
+}
+
+.button{
+   text-align: center;
+}
+
 
