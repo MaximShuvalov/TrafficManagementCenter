@@ -8,6 +8,7 @@ html,
 body {
   height: 100%;
   font-family: Century Gothic;
+  margin: 0;
 }
 
 .container {
@@ -126,8 +127,8 @@ body {
 /* Intro */
 
 .intro {
-  padding-top: 70px;
   display: flex;
+  height: 100vh;
   width: 100%;
 }
 
@@ -306,24 +307,26 @@ div.scrollmenu {
 
 .information {
   display: flex;
-  justify-content: space-between;
   position: absolute;
-  width: 1942px;
-  height: 1569px;
-  left: 0;
-  top: 280%;
+  justify-content: space-between;
+  align-items: center;
 
-  background-size: cover;
+  top: 300%;
+  height: 100%;
+  width: 100%;
 }
 
-.information__inner {
+.contacts__inner {
+  display: block;
+  position: relative;
+
   line-height: 1.5px;
+
   margin-left: 10%;
   width: 30%;
 }
 
 .contacts__title {
-  margin-top: 10px;
   font-weight: bold;
   font-size: 48px;
   color: #223a76;
@@ -394,10 +397,9 @@ div.scrollmenu {
 
 /* Feedback */
 .feedback {
-  margin-top: 110px;
-  margin-left: 200px;
-  margin-right: 100px;
-  width: 40%;
+  margin-left:300px;
+  margin-right: 10%;
+  width: 55%;
 }
 
 .feedback__subtetle {
@@ -440,6 +442,29 @@ div.scrollmenu {
 
 .button {
   text-align: center;
+}
+
+.button button{
+  height: 60px;
+  width: 300px;
+
+  text-align: center;
+
+  font-size: 32px;
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: 700;
+
+  color: #f9e547;
+  border: none;
+  border-radius: 10px;
+  background: #223a76;
+  cursor: pointer;
+}
+
+.button button:hover{
+  border-radius: 10px;
+  border: none;
 }
 
 .menu-text {
