@@ -274,6 +274,8 @@ div.scrollmenu {
   width: 100%;
   top: 20%;
   justify-content: space-between;
+  overflow-x: hidden;
+  white-space: nowrap;
 }
 
 /*div.scrollmenu div {
