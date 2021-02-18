@@ -321,6 +321,8 @@ div.scrollmenu {
     border-radius: 5px;
     width: 254px;
     height: 5px;
+
+    flex-wrap: wrap;
 }
 
 .contacts__infa {
