@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.Server", "TrafficManagementCenter.Server\TrafficManagementCenter.Server.csproj", "{82247DBB-ABEE-4899-94D3-93F8F4098119}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.Server.Tests", "TrafficManagementCenter.Server.Tests\TrafficManagementCenter.Server.Tests.csproj", "{A78FC37C-982E-42A0-850D-A4F3EE48A54B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.TransportSheduleManager", "TrafficManagementCenter.TransportSheduleManager\TrafficManagementCenter.TransportSheduleManager.csproj", "{9EC110E4-F744-4772-9ED5-3AE64E189E0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82247DBB-ABEE-4899-94D3-93F8F4098119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82247DBB-ABEE-4899-94D3-93F8F4098119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82247DBB-ABEE-4899-94D3-93F8F4098119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82247DBB-ABEE-4899-94D3-93F8F4098119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A78FC37C-982E-42A0-850D-A4F3EE48A54B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A78FC37C-982E-42A0-850D-A4F3EE48A54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A78FC37C-982E-42A0-850D-A4F3EE48A54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A78FC37C-982E-42A0-850D-A4F3EE48A54B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EC110E4-F744-4772-9ED5-3AE64E189E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EC110E4-F744-4772-9ED5-3AE64E189E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EC110E4-F744-4772-9ED5-3AE64E189E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EC110E4-F744-4772-9ED5-3AE64E189E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
