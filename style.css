@@ -44,7 +44,6 @@ body {
 }
 
 .header__body {
-  position: relative;
   display: flex;
   z-index: 2;
   align-items: center;
@@ -127,7 +126,6 @@ body {
 /* Intro */
 
 .intro {
-  display: flex;
   height: 100vh;
   width: 100%;
 }
@@ -138,16 +136,13 @@ body {
   justify-content: space-between;
   vertical-align: auto;
 
-  height: 100%;
   width: 100%;
 }
 
 .intro__text {
   display: block;
-
   margin-left: 50px;
-
-  position: relative;
+  width: 50%;
 }
 
 .intro__subtitle {
@@ -163,12 +158,9 @@ body {
 }
 
 
-.intro__image {
+.intro__images{
   display: block;
   left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
   margin: 0;
 }
 
@@ -271,14 +263,8 @@ body {
   color: #223a76;
 }
 
-.intro__images {
-}
-
 .intro__images-1 {
   background: url(../img/Intro/Vector1.jpg);
-}
-
-.intro__images-2 {
 }
 
 div.scrollmenu {
