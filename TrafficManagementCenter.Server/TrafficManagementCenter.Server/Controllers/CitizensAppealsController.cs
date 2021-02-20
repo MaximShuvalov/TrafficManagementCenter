@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Model;
 
 namespace TrafficManagementCenter.Server.Controllers
 {
@@ -18,6 +19,11 @@ namespace TrafficManagementCenter.Server.Controllers
         public int Ping()
         {
             return StatusCodes.Status200OK;
+        }
+
+        public Task<ActionResult> AddAppeal(Appeal appeal)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
