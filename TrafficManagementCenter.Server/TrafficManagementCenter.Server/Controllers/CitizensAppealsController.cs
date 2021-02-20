@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TrafficManagementCenter.Server.Controllers
 {
+    [Route("api/citizens")]
     [ApiController]
-    [Route("[api/citizens]")]
     public class CitizensAppealsController : ControllerBase
     {
         // GET
@@ -14,7 +14,7 @@ namespace TrafficManagementCenter.Server.Controllers
             return "";
         }
 
-        [HttpGet("/ping")]
+        [HttpGet("ping")]
         public int Ping()
         {
             return StatusCodes.Status200OK;
