@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\TrafficManagementCenter.Server.Db\TrafficManagementCenter.Server.Db.csproj" />
       <ProjectReference Include="..\TrafficManagementCenter.Server\TrafficManagementCenter.Server.csproj" />
     </ItemGroup>
 

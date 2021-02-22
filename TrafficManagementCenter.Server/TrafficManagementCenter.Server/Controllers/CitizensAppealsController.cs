@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
+using TrafficManagementCenter.Server.Db.Repositories;
 
 namespace TrafficManagementCenter.Server.Controllers
 {
@@ -21,9 +22,13 @@ namespace TrafficManagementCenter.Server.Controllers
             return StatusCodes.Status200OK;
         }
 
-        public Task<ActionResult> AddAppeal(Appeal appeal)
+        public async Task<IActionResult> AddAppeal(Appeal appeal)
         {
-            throw new System.NotImplementedException();
+            var repos = new AppealRepository();
+
+            await repos.Add(appeal);
+            
+            return Ok();
         }
     }
 }
