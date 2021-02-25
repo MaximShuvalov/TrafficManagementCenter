@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.TransportSheduleManager", "TrafficManagementCenter.TransportSheduleManager\TrafficManagementCenter.TransportSheduleManager.csproj", "{9EC110E4-F744-4772-9ED5-3AE64E189E0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficManagementCenter.Db", "TrafficManagementCenter.Db\TrafficManagementCenter.Db.csproj", "{397508EE-AC5F-42B7-84BF-E973613A259B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{9EC110E4-F744-4772-9ED5-3AE64E189E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EC110E4-F744-4772-9ED5-3AE64E189E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EC110E4-F744-4772-9ED5-3AE64E189E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397508EE-AC5F-42B7-84BF-E973613A259B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{397508EE-AC5F-42B7-84BF-E973613A259B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{397508EE-AC5F-42B7-84BF-E973613A259B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{397508EE-AC5F-42B7-84BF-E973613A259B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
