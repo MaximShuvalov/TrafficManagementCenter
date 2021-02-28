@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace TrafficManagementCenter.Server.Model.Tests
 {
-    public class Tests
+    public class ModelTests
     {
         [SetUp]
         public void Setup()
@@ -28,6 +28,18 @@ namespace TrafficManagementCenter.Server.Model.Tests
             subtypeAppeal.Name = "Дорожные знаки";
             subtypeAppeal.Name = "Вопросы о нецелесообразности установленных знаков";
             subtypeAppeal.Type = new TypeAppeal();
+            Assert.Pass();
+        }
+        
+        [Test]
+        public void CreateAppealTest()
+        {
+            var appeal = new Appeal();
+            appeal.Key = 0001;
+            appeal.Subtype = new SubtypeAppeal();
+            appeal.Email = "test@test.ru";
+            appeal.Text = "Прошу решить проблему";
+            appeal.Attachment = "path/to/attachment";
             Assert.Pass();
         }
     }
