@@ -17,7 +17,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Task Add(Appeal entity)
+        public void Add(Appeal entity)
         {
             throw new System.NotImplementedException();
         }
