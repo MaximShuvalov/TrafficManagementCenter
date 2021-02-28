@@ -1,8 +1,10 @@
+using Model;
 using NUnit.Framework;
+using TrafficManagementCenter.Server.Db.Repositories;
 
 namespace TrafficManagementCenter.Server.Db.Tests
 {
-    public class Tests
+    public class DbTests
     {
         [SetUp]
         public void Setup()
@@ -10,8 +12,32 @@ namespace TrafficManagementCenter.Server.Db.Tests
         }
 
         [Test]
-        public void Test1()
+        [Ignore("Интеграционный")]
+        public void AddSubtypeAppealTest()
         {
+            var repos = new SubtypeAppealRepository();
+            var subtype = new SubtypeAppeal()
+            {
+                Name = "TestSubtype",
+                Note = "Subtype create only test"
+            };
+            repos.Add(subtype);
+            
+            Assert.Pass();
+        }
+        
+        [Test]
+        [Ignore("Интеграционный")]
+        public void AddTypeAppealTest()
+        {
+            var repos = new TypeAppealRepository();
+            var type = new TypeAppeal()
+            {
+                Name = "TestType",
+                Note = "Type create only test"
+            };
+            repos.Add(type);
+            
             Assert.Pass();
         }
     }
