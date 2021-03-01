@@ -12,7 +12,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         }
 
         [Test]
-        //[Ignore("Интеграционный")]
+        [Ignore("Интеграционный")]
         public void AddSubtypeAppealTest()
         {
             var repos = new SubtypeAppealRepository();
@@ -23,11 +23,13 @@ namespace TrafficManagementCenter.Server.Db.Tests
             };
             repos.Add(subtype);
             
+            repos.Delete(subtype);
+            
             Assert.Pass();
         }
         
         [Test]
-        //[Ignore("Интеграционный")]
+        [Ignore("Интеграционный")]
         public void AddTypeAppealTest()
         {
             var repos = new TypeAppealRepository();
@@ -38,11 +40,13 @@ namespace TrafficManagementCenter.Server.Db.Tests
             };
             repos.Add(type);
             
+            repos.Delete(type);
+            
             Assert.Pass();
         }
         
         [Test]
-        //[Ignore("Интеграционный")]
+        [Ignore("Интеграционный")]
         public void AddAppealTest()
         {
             var repos = new AppealRepository();
@@ -51,6 +55,8 @@ namespace TrafficManagementCenter.Server.Db.Tests
                 Email = "test@test.com"
             };
             repos.Add(appeal);
+            
+            repos.Delete(appeal);
             
             Assert.Pass();
         }
