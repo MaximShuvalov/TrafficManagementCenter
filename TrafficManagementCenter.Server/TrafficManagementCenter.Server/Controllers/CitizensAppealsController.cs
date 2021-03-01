@@ -26,7 +26,7 @@ namespace TrafficManagementCenter.Server.Controllers
         {
             var repos = new AppealRepository();
 
-            await repos.Add(appeal);
+            repos.Add(appeal);
             
             return Ok();
         }

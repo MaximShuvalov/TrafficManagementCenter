@@ -1,7 +1,10 @@
-﻿namespace Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Model
 {
     public class Appeal
     {
+        [Key]
         public long Key { get; set; }
         public SubtypeAppeal Subtype { get; set; }
         public string Email { get; set; }
