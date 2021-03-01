@@ -32,5 +32,16 @@ namespace TrafficManagementCenter.Server.Db.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public void Delete(TypeAppeal entity)
+        {
+            if (entity is null)
+                throw new ArgumentException("TypeAppeal is null");
+            using (_context = new AppDbContext())
+            {
+                _context.TypeAppeal.Remove(entity);
+                _context.SaveChanges();
+            }
+        }
     }
 }

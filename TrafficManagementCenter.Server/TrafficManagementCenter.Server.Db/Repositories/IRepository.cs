@@ -11,5 +11,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         IEnumerable<T> GetEntities();
 
         void Add(T entity);
+
+        void Delete(T entity);
     }
 }
