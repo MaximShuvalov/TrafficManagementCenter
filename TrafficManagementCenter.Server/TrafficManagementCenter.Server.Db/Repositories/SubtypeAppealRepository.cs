@@ -10,21 +10,17 @@ namespace TrafficManagementCenter.Server.Db.Repositories
     public class SubtypeAppealRepository : IRepository<SubtypeAppeal>
     {
         private SubtypeAppealContext _context;
+
         public SubtypeAppeal Get(long id)
         {
-            SubtypeAppeal subtype;
-            
             using (_context = new SubtypeAppealContext())
-            {
-                subtype = _context.SubtypesAppeals.FirstOrDefault(o => o.Key.Equals(id));
-            }
-
-            return subtype;
+                return _context.SubtypesAppeals.FirstOrDefault(o => o.Key.Equals(id));
         }
 
         public IEnumerable<SubtypeAppeal> GetEntities()
         {
-            throw new System.NotImplementedException();
+            using (_context = new SubtypeAppealContext())
+                return _context.SubtypesAppeals;
         }
 
         public void Add(SubtypeAppeal entity)

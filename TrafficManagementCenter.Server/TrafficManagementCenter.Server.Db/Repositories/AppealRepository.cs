@@ -26,7 +26,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         public void Add(Appeal entity)
         {
             if (entity is null)
-                return;
+                throw new ArgumentException("Appeal is null");
             using (_context = new AppealContext())
             {
                 _context.TypeAppeal.Add(entity);
