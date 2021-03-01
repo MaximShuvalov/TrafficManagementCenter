@@ -9,16 +9,16 @@ namespace TrafficManagementCenter.Server.Db.Repositories
 {
     public class TypeAppealRepository : IRepository<TypeAppeal>
     {
-        private TypeAppealContext _context;
+        private AppDbContext _context;
         public TypeAppeal Get(long id)
         {
-            using (_context = new TypeAppealContext())
+            using (_context = new AppDbContext())
                 return _context.TypeAppeal.FirstOrDefault(p=> p.Key.Equals(id));
         }
 
         public IEnumerable<TypeAppeal> GetEntities()
         {
-            using (_context = new TypeAppealContext())
+            using (_context = new AppDbContext())
                 return _context.TypeAppeal;
         }
 
@@ -26,7 +26,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         {
             if(entity is null)
                 throw new ArgumentException("TypeAppeal is null");
-            using (_context = new TypeAppealContext())
+            using (_context = new AppDbContext())
             {
                 _context.TypeAppeal.Add(entity);
                 _context.SaveChanges();

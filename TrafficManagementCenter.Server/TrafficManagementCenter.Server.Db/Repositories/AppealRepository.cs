@@ -9,17 +9,17 @@ namespace TrafficManagementCenter.Server.Db.Repositories
 {
     public class AppealRepository : IRepository<Appeal>
     {
-        private AppealContext _context;
+        private AppDbContext _context;
 
         public Appeal Get(long id)
         {
-            using (_context = new AppealContext())
+            using (_context = new AppDbContext())
                 return _context.Appeal.FirstOrDefault(p => p.Key.Equals(id));
         }
 
         public IEnumerable<Appeal> GetEntities()
         {
-            using (_context = new AppealContext())
+            using (_context = new AppDbContext())
                 return _context.Appeal;
         }
 
@@ -27,7 +27,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         {
             if (entity is null)
                 throw new ArgumentException("Appeal is null");
-            using (_context = new AppealContext())
+            using (_context = new AppDbContext())
             {
                 _context.Appeal.Add(entity);
                 _context.SaveChanges();

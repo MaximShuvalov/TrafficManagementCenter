@@ -3,9 +3,9 @@ using Model;
 
 namespace TrafficManagementCenter.Server.Db.Context
 {
-    public class AppealContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public AppealContext()
+        public AppDbContext()
         {
             Database.EnsureCreated();
         }
@@ -16,5 +16,7 @@ namespace TrafficManagementCenter.Server.Db.Context
         }
         
         public DbSet<Appeal> Appeal { get; set; }
+        public DbSet<SubtypeAppeal> SubtypeAppeals { get; set; }
+        public DbSet<TypeAppeal> TypeAppeal { get; set; }
     }
 }
