@@ -14,13 +14,13 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         public SubtypeAppeal Get(long id)
         {
             using (_context = new SubtypeAppealContext())
-                return _context.SubtypesAppeals.FirstOrDefault(o => o.Key.Equals(id));
+                return _context.SubtypeAppeals.FirstOrDefault(o => o.Key.Equals(id));
         }
 
         public IEnumerable<SubtypeAppeal> GetEntities()
         {
             using (_context = new SubtypeAppealContext())
-                return _context.SubtypesAppeals;
+                return _context.SubtypeAppeals;
         }
 
         public void Add(SubtypeAppeal entity)
@@ -29,7 +29,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
                 throw new ArgumentException("SubtypeAppeal is null");
             using (_context = new SubtypeAppealContext())
             {
-                _context.SubtypesAppeals.Add(entity);
+                _context.SubtypeAppeals.Add(entity);
                 _context.SaveChanges();
             }
         }

@@ -14,13 +14,13 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         public Appeal Get(long id)
         {
             using (_context = new AppealContext())
-                return _context.TypeAppeal.FirstOrDefault(p => p.Key.Equals(id));
+                return _context.Appeal.FirstOrDefault(p => p.Key.Equals(id));
         }
 
         public IEnumerable<Appeal> GetEntities()
         {
             using (_context = new AppealContext())
-                return _context.TypeAppeal;
+                return _context.Appeal;
         }
 
         public void Add(Appeal entity)
@@ -29,7 +29,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
                 throw new ArgumentException("Appeal is null");
             using (_context = new AppealContext())
             {
-                _context.TypeAppeal.Add(entity);
+                _context.Appeal.Add(entity);
                 _context.SaveChanges();
             }
         }
