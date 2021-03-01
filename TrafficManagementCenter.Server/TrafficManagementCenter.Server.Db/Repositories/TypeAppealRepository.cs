@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
@@ -10,18 +12,20 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         private TypeAppealContext _context;
         public TypeAppeal Get(long id)
         {
-            throw new System.NotImplementedException();
+            using (_context = new TypeAppealContext())
+                return _context.TypeAppeal.FirstOrDefault(p=> p.Key.Equals(id));
         }
 
         public IEnumerable<TypeAppeal> GetEntities()
         {
-            throw new System.NotImplementedException();
+            using (_context = new TypeAppealContext())
+                return _context.TypeAppeal;
         }
 
         public void Add(TypeAppeal entity)
         {
             if(entity is null)
-                return;
+                throw new ArgumentException("TypeAppeal is null");
             using (_context = new TypeAppealContext())
             {
                 _context.TypeAppeal.Add(entity);
