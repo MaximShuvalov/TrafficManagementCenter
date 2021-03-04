@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Model;
 using NUnit.Framework;
 using TrafficManagementCenter.Server.Controllers;
+using TrafficManagementCenter.Server.Db.Context;
 
 namespace TrafficManagementCenter.Server.Tests
 {
@@ -15,13 +16,13 @@ namespace TrafficManagementCenter.Server.Tests
         [Test]
         public void AddCitizensAppealsTest()
         {
-            var controller = new CitizensAppealsController();
+            var controller = new CitizensAppealsController(new AppDbContext());
         }
 
         [Test]
         public void CitizensAppealsControllerPingTets()
         {
-            var controller = new CitizensAppealsController();
+            var controller = new CitizensAppealsController(new AppDbContext());
 
             var result = controller.Ping();
 
@@ -31,7 +32,7 @@ namespace TrafficManagementCenter.Server.Tests
         [Test]
         public void CitizensAppealsControllerAddAppealTets()
         {
-            var controller = new CitizensAppealsController();
+            var controller = new CitizensAppealsController(new AppDbContext());
 
             var appeal = new Appeal();
 
