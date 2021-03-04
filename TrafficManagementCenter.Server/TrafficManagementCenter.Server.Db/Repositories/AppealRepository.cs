@@ -17,10 +17,17 @@ namespace TrafficManagementCenter.Server.Db.Repositories
                 return _context.Appeal.FirstOrDefault(p => p.Key.Equals(id));
         }
 
-        public IEnumerable<Appeal> GetEntities()
+        public Task<IEnumerable<Appeal>> GetEntities()
         {
-            using (_context = new AppDbContext())
-                return _context.Appeal;
+            return new Task<IEnumerable<Appeal>>(() =>
+            {
+                using (_context = new AppDbContext())
+                    return _context.Appeal;
+            });
+            //IEnumerable<Appeal> appeals;
+            //using (_context = new AppDbContext())
+            //     appeals = _context.Appeal;
+            //return appeals;
         }
 
         public void Add(Appeal entity)

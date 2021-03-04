@@ -1,5 +1,6 @@
 using Model;
 using NUnit.Framework;
+using TrafficManagementCenter.Server.Db.Extensions;
 using TrafficManagementCenter.Server.Db.Repositories;
 
 namespace TrafficManagementCenter.Server.Db.Tests
@@ -59,6 +60,25 @@ namespace TrafficManagementCenter.Server.Db.Tests
             repos.Delete(appeal);
             
             Assert.Pass();
+        }
+        
+        [Test]
+        [Explicit("Интеграционный")]
+        public void GetAppealTest()
+        {
+            var repos = new AppealRepository();
+            var appeal = new Appeal()
+            {
+                Email = "test@test.com"
+            };
+            repos.Add(appeal);
+            var key =  appeal.GetAppealKey();
+            
+            var appealFromDb = repos.Get(key);
+            
+            repos.Delete(appeal);
+            
+            Assert.Equals(appeal, appealFromDb);
         }
     }
 }

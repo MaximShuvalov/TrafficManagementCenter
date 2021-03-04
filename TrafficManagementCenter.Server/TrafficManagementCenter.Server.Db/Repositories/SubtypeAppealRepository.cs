@@ -17,10 +17,11 @@ namespace TrafficManagementCenter.Server.Db.Repositories
                 return _context.SubtypeAppeals.FirstOrDefault(o => o.Key.Equals(id));
         }
 
-        public IEnumerable<SubtypeAppeal> GetEntities()
+        public Task<IEnumerable<SubtypeAppeal>> GetEntities()
         {
-            using (_context = new AppDbContext())
-                return _context.SubtypeAppeals;
+            throw new NotImplementedException();
+            //using (_context = new AppDbContext())
+            //    return _context.SubtypeAppeals;
         }
 
         public void Add(SubtypeAppeal entity)
