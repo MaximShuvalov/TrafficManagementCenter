@@ -16,11 +16,10 @@ namespace TrafficManagementCenter.Server.Db.Repositories
                 return _context.TypeAppeal.FirstOrDefault(p=> p.Key.Equals(id));
         }
 
-        public Task<IEnumerable<TypeAppeal>> GetEntities()
+        public IEnumerable<TypeAppeal> GetEntities()
         {
-            //using (_context = new AppDbContext())
-            //    return _context.TypeAppeal;
-            throw new NotImplementedException();
+            using (_context = new AppDbContext())
+                return _context.TypeAppeal;
         }
 
         public void Add(TypeAppeal entity)

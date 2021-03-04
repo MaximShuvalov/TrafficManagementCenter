@@ -8,7 +8,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
     {
         T Get(long id);
 
-        Task<IEnumerable<T>> GetEntities();
+        IEnumerable<T> GetEntities();
 
         void Add(T entity);
 
