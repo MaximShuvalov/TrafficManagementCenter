@@ -14,7 +14,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         }
 
         [Test]
-        [Explicit("Интеграционный")]
+        [Ignore("Интеграционный")]
         public void AddSubtypeAppealTest()
         {
             var subtype = new SubtypeAppeal()
@@ -32,7 +32,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         }
 
         [Test]
-        [Explicit("Интеграционный")]
+        [Ignore("Интеграционный")]
         public void AddTypeAppealTest()
         {
             var type = new TypeAppeal()
@@ -78,7 +78,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         }
 
         [Test]
-        [Explicit("Интеграционный")]
+        [Ignore("Интеграционный")]
         public void AddAppealTest()
         {
             var appeal = new Appeal()
@@ -96,7 +96,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         }
         
         [Test]
-        [Explicit("Интеграционный")]
+        [Ignore("Интеграционный")]
         public void GetAppealByIdTest()
         {
             var appeal = new Appeal()
