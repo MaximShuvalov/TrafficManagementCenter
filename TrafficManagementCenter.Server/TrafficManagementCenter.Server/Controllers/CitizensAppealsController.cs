@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
+using TrafficManagementCenter.Server.Db.Extensions;
 using TrafficManagementCenter.Server.Db.Repositories;
 
 namespace TrafficManagementCenter.Server.Controllers
@@ -43,9 +44,8 @@ namespace TrafficManagementCenter.Server.Controllers
         [HttpGet("allbyemail")]
         public async Task<IActionResult> GetAllAppealsByEmail(string email)
         {
-            IEnumerable<Appeal> appeals;
             var repos = new AppealRepository(_context); 
-            appeals = repos.GetEntitiesByEmail(email);
+            var appeals = repos.GetEntitiesByEmail(email);
             return Ok(appeals);
         }
 
