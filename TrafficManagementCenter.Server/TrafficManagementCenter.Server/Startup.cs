@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using TrafficManagementCenter.Server.Db.Context;
+using TrafficManagementCenter.Server.Db.DI;
 
 namespace TrafficManagementCenter.Server
 {
@@ -27,6 +29,8 @@ namespace TrafficManagementCenter.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<AppDbContext>();
+            services.AddRepositories();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

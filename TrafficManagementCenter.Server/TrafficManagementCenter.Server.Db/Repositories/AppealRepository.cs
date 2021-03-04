@@ -9,7 +9,12 @@ namespace TrafficManagementCenter.Server.Db.Repositories
     public class AppealRepository : IRepository<Appeal>, IDisposable
     {
         //todo mshuvalov: Подумать, нужно ли выносить в интерфейс или делать входящим параметром
-        private readonly AppDbContext _context = new AppDbContext();
+        private readonly AppDbContext _context;
+
+        public AppealRepository(AppDbContext context)
+        {
+            _context = context;
+        }
 
         public Appeal Get(long id)
         {
