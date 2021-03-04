@@ -15,7 +15,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         }
 
         [Test]
-        [Ignore("Интеграционный")]
+        [Explicit("Интеграционный")]
         public void AddSubtypeAppealTest()
         {
             var subtype = new SubtypeAppeal()
@@ -31,7 +31,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         }
 
         [Test]
-        [Ignore("Интеграционный")]
+        [Explicit("Интеграционный")]
         public void AddTypeAppealTest()
         {
             var type = new TypeAppeal()
@@ -74,7 +74,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         }
 
         [Test]
-        [Ignore("Интеграционный")]
+        [Explicit("Интеграционный")]
         public void AddAppealTest()
         {
             var appeal = new Appeal()
@@ -92,7 +92,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         }
 
         [Test]
-        [Ignore("Интеграционный")]
+        [Explicit("Интеграционный")]
         public void GetAppealByIdTest()
         {
             var appeal = new Appeal()
@@ -108,6 +108,35 @@ namespace TrafficManagementCenter.Server.Db.Tests
             var appealFromDb = repos1.Get(keyAppeal);
             Assert.AreEqual(appeal.Email, appealFromDb.Email);
             repos1.Delete(appeal);
+        }
+        
+        [Test]
+        [Explicit("Интеграционный")]
+        public void GetAllAppealByEmailTest()
+        {
+            var appeal = new Appeal()
+            {
+                Email = "test@test.com",
+                Text = "Text1"
+            };
+
+            var appeal1 = new Appeal()
+            {
+                Email = "test@test.com",
+                Text = "Text2"
+            };
+
+            var repos = new AppealRepository(new AppDbContext());
+
+            repos.Add(appeal);
+            repos.Add(appeal1);
+
+            var appeals = repos.GetEntitiesByEmail("test@test.com");
+
+            Assert.IsTrue(appeals.ToList().Count() > 1);
+
+            repos.Delete(appeal);
+            repos.Delete(appeal1);
         }
     }
 }
