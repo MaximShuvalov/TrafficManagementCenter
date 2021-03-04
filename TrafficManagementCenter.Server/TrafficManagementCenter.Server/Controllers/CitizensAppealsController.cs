@@ -22,6 +22,7 @@ namespace TrafficManagementCenter.Server.Controllers
             return StatusCodes.Status200OK;
         }
 
+        [HttpPost("addappeal")]
         public async Task<IActionResult> AddAppeal(Appeal appeal)
         {
             var repos = new AppealRepository();
