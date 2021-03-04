@@ -14,12 +14,14 @@ namespace TrafficManagementCenter.Server.Tests
         }
 
         [Test]
+        [Ignore("Integration")]
         public void AddCitizensAppealsTest()
         {
             var controller = new CitizensAppealsController(new AppDbContext());
         }
 
         [Test]
+        [Ignore("Integration")]
         public void CitizensAppealsControllerPingTets()
         {
             var controller = new CitizensAppealsController(new AppDbContext());
@@ -30,6 +32,7 @@ namespace TrafficManagementCenter.Server.Tests
         }
         
         [Test]
+        [Ignore("Integration")]
         public void CitizensAppealsControllerAddAppealTets()
         {
             var controller = new CitizensAppealsController(new AppDbContext());
