@@ -1,47 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
 
 namespace TrafficManagementCenter.Server.Db.Repositories
 {
-    public class TypeAppealRepository : IRepository<TypeAppeal>
+    public class TypeAppealRepository : IRepository<TypeAppeal>, IDisposable
     {
-        private AppDbContext _context;
-        public TypeAppeal Get(long id)
-        {
-            using (_context = new AppDbContext())
-                return _context.TypeAppeal.FirstOrDefault(p=> p.Key.Equals(id));
-        }
+        private readonly AppDbContext _context = new AppDbContext();
+        public TypeAppeal Get(long id) => _context.TypeAppeal.FirstOrDefault(p => p.Key.Equals(id));
 
-        public IEnumerable<TypeAppeal> GetEntities()
-        {
-            using (_context = new AppDbContext())
-                return _context.TypeAppeal;
-        }
+        public IEnumerable<TypeAppeal> GetEntities() => _context.TypeAppeal;
 
         public void Add(TypeAppeal entity)
         {
             if(entity is null)
                 throw new ArgumentException("TypeAppeal is null");
-            using (_context = new AppDbContext())
-            {
-                _context.TypeAppeal.Add(entity);
+            _context.TypeAppeal.Add(entity);
                 _context.SaveChanges();
             }
-        }
 
         public void Delete(TypeAppeal entity)
         {
             if (entity is null)
                 throw new ArgumentException("TypeAppeal is null");
-            using (_context = new AppDbContext())
-            {
-                _context.TypeAppeal.Remove(entity);
+            _context.TypeAppeal.Remove(entity);
                 _context.SaveChanges();
             }
+
+        public void Dispose()
+        {
+            _context?.Dispose();
         }
     }
 }

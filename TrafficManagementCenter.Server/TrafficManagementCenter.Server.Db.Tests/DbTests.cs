@@ -1,3 +1,4 @@
+using System.Linq;
 using Model;
 using NUnit.Framework;
 using TrafficManagementCenter.Server.Db.Repositories;
@@ -15,49 +16,81 @@ namespace TrafficManagementCenter.Server.Db.Tests
         [Explicit("Интеграционный")]
         public void AddSubtypeAppealTest()
         {
-            var repos = new SubtypeAppealRepository();
             var subtype = new SubtypeAppeal()
             {
                 Name = "TestSubtype",
                 Note = "Subtype create only test"
             };
-            repos.Add(subtype);
-            
-            repos.Delete(subtype);
-            
+            using (var repos = new SubtypeAppealRepository())
+            {
+                repos.Add(subtype);
+                repos.Delete(subtype);
+            }
+
             Assert.Pass();
         }
-        
+
         [Test]
         [Explicit("Интеграционный")]
         public void AddTypeAppealTest()
         {
-            var repos = new TypeAppealRepository();
             var type = new TypeAppeal()
             {
                 Name = "TestType",
                 Note = "Type create only test"
             };
-            repos.Add(type);
-            
-            repos.Delete(type);
-            
+            using (var repos = new TypeAppealRepository())
+            {
+                repos.Add(type);
+                repos.Delete(type);
+            }
+
             Assert.Pass();
         }
-        
+
         [Test]
         [Explicit("Интеграционный")]
-        public void AddAppealTest()
+        public void GetAllAppealTest()
         {
-            var repos = new AppealRepository();
             var appeal = new Appeal()
             {
                 Email = "test@test.com"
             };
-            repos.Add(appeal);
-            
-            repos.Delete(appeal);
-            
+
+            var appeal1 = new Appeal()
+            {
+                Email = "test1@test.com"
+            };
+
+            using (var repos = new AppealRepository())
+            {
+                repos.Add(appeal);
+                repos.Add(appeal1);
+
+                var appeals = repos.GetEntities();
+
+                Assert.IsTrue(appeals.ToList().Count() > 0);
+
+                repos.Delete(appeal);
+                repos.Delete(appeal1);
+            }
+        }
+
+        [Test]
+        [Explicit("Интеграционный")]
+        public void AddAppealTest()
+        {
+            var appeal = new Appeal()
+            {
+                Email = "test@test.com"
+            };
+
+            using (var repos1 = new AppealRepository())
+            {
+                repos1.Add(appeal);
+                repos1.Delete(appeal);
+            }
+
             Assert.Pass();
         }
     }
