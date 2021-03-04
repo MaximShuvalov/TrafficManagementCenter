@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
 using TrafficManagementCenter.Server.Db.Extensions;
+using TrafficManagementCenter.Server.Db.Factory;
 using TrafficManagementCenter.Server.Db.Repositories;
 
 namespace TrafficManagementCenter.Server.Controllers
@@ -19,12 +20,6 @@ namespace TrafficManagementCenter.Server.Controllers
         {
             _context = context;
         }
-        
-        // GET
-        public string Index()
-        {
-            return "";
-        }
 
         [HttpGet("ping")]
         public int Ping()
@@ -35,25 +30,19 @@ namespace TrafficManagementCenter.Server.Controllers
         [HttpGet("all")]
         public async Task<IActionResult> GetAllAppeal()
         {
-            IEnumerable<Appeal> appeals;
-            var repos = new AppealRepository(_context); 
-            appeals = repos.GetEntities();
-            return Ok(appeals);
+            return Ok(RepositoryFactory<Appeal>.Create(_context).GetEntities());
         }
-        
+
         [HttpGet("allbyemail")]
         public async Task<IActionResult> GetAllAppealsByEmail(string email)
         {
-            var repos = new AppealRepository(_context); 
-            var appeals = repos.GetEntitiesByEmail(email);
-            return Ok(appeals);
+            return Ok(((AppealRepository) RepositoryFactory<Appeal>.Create(_context)).GetEntitiesByEmail(email));
         }
 
         [HttpPost("addappeal")]
         public async Task<IActionResult> AddAppeal(Appeal appeal)
         {
-            var repos = new AppealRepository(_context);
-            repos.Add(appeal);
+            RepositoryFactory<Appeal>.Create(_context).Add(appeal);
             return Ok();
         }
     }

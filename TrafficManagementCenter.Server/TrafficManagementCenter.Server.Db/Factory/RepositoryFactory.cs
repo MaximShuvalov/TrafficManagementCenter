@@ -21,4 +21,5 @@ namespace TrafficManagementCenter.Server.Db.Factory
             throw new Exception();
         }
     }
+    //todo mshuvalov: подумать на статиком, возможно, стоит вынести в di
 }
