@@ -1,6 +1,7 @@
 using System.Linq;
 using Model;
 using NUnit.Framework;
+using TrafficManagementCenter.Server.Db.Extensions;
 using TrafficManagementCenter.Server.Db.Repositories;
 
 namespace TrafficManagementCenter.Server.Db.Tests
@@ -92,6 +93,26 @@ namespace TrafficManagementCenter.Server.Db.Tests
             }
 
             Assert.Pass();
+        }
+        
+        [Test]
+        [Explicit("Интеграционный")]
+        public void GetAppealByIdTest()
+        {
+            var appeal = new Appeal()
+            {
+                Email = "test@test.com",
+                Text = "Этот текст для теста"
+            };
+
+            using (var repos1 = new AppealRepository())
+            {
+                repos1.Add(appeal);
+                var keyAppeal = repos1.GetIdByEmailAndText(appeal.Email, appeal.Text);
+                var appealFromDb = repos1.Get(keyAppeal);
+                Assert.AreEqual(appeal.Email, appealFromDb.Email);
+                repos1.Delete(appeal);
+            }
         }
     }
 }
