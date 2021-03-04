@@ -8,8 +8,12 @@ namespace TrafficManagementCenter.Server.Db.Repositories
 {
     public class TypeAppealRepository : IRepository<TypeAppeal>
     {
-        //todo mshuvalov: Подумать, нужно ли выносить в интерфейс или делать входящим параметром
-        private readonly AppDbContext _context = new AppDbContext();
+        private readonly AppDbContext _context;
+
+        public TypeAppealRepository(AppDbContext context)
+        {
+            _context = context;
+        }
         public TypeAppeal Get(long id) => _context.TypeAppeal.FirstOrDefault(p => p.Key.Equals(id));
 
         public IEnumerable<TypeAppeal> GetEntities() => _context.TypeAppeal;
