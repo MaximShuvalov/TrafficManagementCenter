@@ -6,7 +6,7 @@ using TrafficManagementCenter.Server.Db.Context;
 
 namespace TrafficManagementCenter.Server.Db.Repositories
 {
-    public class AppealRepository : IRepository<Appeal>, IDisposable
+    public class AppealRepository : IRepository<Appeal>
     {
         //todo mshuvalov: Подумать, нужно ли выносить в интерфейс или делать входящим параметром
         private readonly AppDbContext _context;
@@ -40,11 +40,6 @@ namespace TrafficManagementCenter.Server.Db.Repositories
                 throw new ArgumentException("Appeal is null");
             _context.Appeal.Remove(entity);
             _context.SaveChanges();
-        }
-
-        public void Dispose()
-        {
-            _context?.Dispose();
         }
     }
 }

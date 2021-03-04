@@ -6,7 +6,7 @@ using TrafficManagementCenter.Server.Db.Context;
 
 namespace TrafficManagementCenter.Server.Db.Repositories
 {
-    public class TypeAppealRepository : IRepository<TypeAppeal>, IDisposable
+    public class TypeAppealRepository : IRepository<TypeAppeal>
     {
         //todo mshuvalov: Подумать, нужно ли выносить в интерфейс или делать входящим параметром
         private readonly AppDbContext _context = new AppDbContext();
@@ -16,23 +16,18 @@ namespace TrafficManagementCenter.Server.Db.Repositories
 
         public void Add(TypeAppeal entity)
         {
-            if(entity is null)
+            if (entity is null)
                 throw new ArgumentException("TypeAppeal is null");
             _context.TypeAppeal.Add(entity);
-                _context.SaveChanges();
-            }
+            _context.SaveChanges();
+        }
 
         public void Delete(TypeAppeal entity)
         {
             if (entity is null)
                 throw new ArgumentException("TypeAppeal is null");
             _context.TypeAppeal.Remove(entity);
-                _context.SaveChanges();
-            }
-
-        public void Dispose()
-        {
-            _context?.Dispose();
+            _context.SaveChanges();
         }
     }
 }

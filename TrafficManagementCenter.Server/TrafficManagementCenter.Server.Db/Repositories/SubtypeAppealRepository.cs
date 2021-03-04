@@ -6,7 +6,7 @@ using TrafficManagementCenter.Server.Db.Context;
 
 namespace TrafficManagementCenter.Server.Db.Repositories
 {
-    public class SubtypeAppealRepository : IRepository<SubtypeAppeal>, IDisposable
+    public class SubtypeAppealRepository : IRepository<SubtypeAppeal>
     {
         //todo mshuvalov: Подумать, нужно ли выносить в интерфейс или делать входящим параметром
         private readonly AppDbContext _context = new AppDbContext();
@@ -29,11 +29,6 @@ namespace TrafficManagementCenter.Server.Db.Repositories
                 throw new ArgumentException("SubtypeAppeal is null");
             _context.SubtypeAppeals.Remove(entity);
             _context.SaveChanges();
-        }
-
-        public void Dispose()
-        {
-            _context?.Dispose();
         }
     }
 }

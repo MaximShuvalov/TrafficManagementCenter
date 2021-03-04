@@ -35,16 +35,16 @@ namespace TrafficManagementCenter.Server.Controllers
         public async Task<IActionResult> GetAllAppeal()
         {
             IEnumerable<Appeal> appeals;
-            using (var repos = new AppealRepository(_context))
-                appeals =repos.GetEntities();
+            var repos = new AppealRepository(_context); 
+            appeals =repos.GetEntities();
             return Ok(appeals);
         }
 
         [HttpPost("addappeal")]
         public async Task<IActionResult> AddAppeal(Appeal appeal)
         {
-            using (var repos = new AppealRepository(_context))
-                repos.Add(appeal);
+            var repos = new AppealRepository(_context);
+            repos.Add(appeal);
             return Ok();
         }
     }
