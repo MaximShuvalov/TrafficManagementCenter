@@ -8,6 +8,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
 {
     public class SubtypeAppealRepository : IRepository<SubtypeAppeal>, IDisposable
     {
+        //todo mshuvalov: Подумать, нужно ли выносить в интерфейс или делать входящим параметром
         private readonly AppDbContext _context = new AppDbContext();
 
         public SubtypeAppeal Get(long id) => _context.SubtypeAppeals.FirstOrDefault(o => o.Key.Equals(id));
