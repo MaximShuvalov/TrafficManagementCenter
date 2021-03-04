@@ -36,7 +36,16 @@ namespace TrafficManagementCenter.Server.Controllers
         {
             IEnumerable<Appeal> appeals;
             var repos = new AppealRepository(_context); 
-            appeals =repos.GetEntities();
+            appeals = repos.GetEntities();
+            return Ok(appeals);
+        }
+        
+        [HttpGet("allbyemail")]
+        public async Task<IActionResult> GetAllAppealsByEmail(string email)
+        {
+            IEnumerable<Appeal> appeals;
+            var repos = new AppealRepository(_context); 
+            appeals = repos.GetEntitiesByEmail(email);
             return Ok(appeals);
         }
 

@@ -8,7 +8,6 @@ namespace TrafficManagementCenter.Server.Db.Repositories
 {
     public class AppealRepository : IRepository<Appeal>
     {
-        //todo mshuvalov: Подумать, нужно ли выносить в интерфейс или делать входящим параметром
         private readonly AppDbContext _context;
 
         public AppealRepository(AppDbContext context)
@@ -24,6 +23,11 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         public IEnumerable<Appeal> GetEntities()
         {
             return _context.Appeal;
+        }
+        
+        public IEnumerable<Appeal> GetEntitiesByEmail(string email)
+        {
+            return _context.Appeal.Where(p=> p.Email.Equals(email));
         }
 
         public void Add(Appeal entity)
