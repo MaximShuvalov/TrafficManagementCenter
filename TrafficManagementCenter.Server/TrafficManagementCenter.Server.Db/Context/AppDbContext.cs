@@ -20,7 +20,7 @@ namespace TrafficManagementCenter.Server.Db.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql(
-                "Server=localhost; Port=5433; Database=TrafficManagementCenter; Username=TestUser; Password=Qwerty123;");
+                "Host=localhost; Port=5433; Database=TrafficManagementCenter; Username=TestUser; Password=Qwerty123;");
         }
 
         public DbSet<Appeal> Appeal { get; set; }

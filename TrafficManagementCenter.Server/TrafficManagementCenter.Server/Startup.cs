@@ -21,9 +21,11 @@ namespace TrafficManagementCenter.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionDb = Configuration.GetConnectionString("DefaultConnection");
+            
             services.AddControllers();
             services.AddDbContext<AppDbContext>(
-            options => options.UseNpgsql("Server=localhost; Port=5432; Database=TrafficManagementCenter; Username=TestUser; Password=Qwerty123;")
+            options => options.UseNpgsql(connectionDb)
             );
             services.AddRepositories();
         }
