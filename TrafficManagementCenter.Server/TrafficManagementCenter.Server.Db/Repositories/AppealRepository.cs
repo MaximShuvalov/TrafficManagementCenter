@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
 
@@ -15,15 +16,12 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             _context = context;
         }
 
-        public Appeal Get(long id)
-        {
-            return _context.Appeal.FirstOrDefault(p => p.Key.Equals(id));
-        }
+        public Appeal Get(long id) => _context.Appeal.Include(p => p.ClassAppeal)
+            .Include(o => o.Subtype)
+            .FirstOrDefault(p => p.Key.Equals(id));
 
-        public IEnumerable<Appeal> GetEntities()
-        {
-            return _context.Appeal;
-        }
+        public IEnumerable<Appeal> GetEntities() => _context.Appeal.Include(p => p.ClassAppeal)
+            .Include(o => o.Subtype);
 
         public void Add(Appeal entity)
         {

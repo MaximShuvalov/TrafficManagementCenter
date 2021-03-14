@@ -171,7 +171,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         {
             var appeal2 = new Appeal()
             {
-                Key = 0205,
+                Key = 1217,
                 Email = "test2@test.com"
             };
 
@@ -183,8 +183,9 @@ namespace TrafficManagementCenter.Server.Db.Tests
             
             Assert.True(receivedAppeal.Key.Equals(appeal2.Key));
             Assert.True(receivedAppeal.Email.Equals(appeal2.Email));
+            Assert.True(receivedAppeal.Subtype.Name.Equals(appeal2.Subtype.Name));
+            Assert.True(receivedAppeal.ClassAppeal.Name.Equals(appeal2.ClassAppeal.Name));
 
-            //todo mshuvalov: проверка вложенных объекты
             repos1.Delete(appeal2);
         }
     }
