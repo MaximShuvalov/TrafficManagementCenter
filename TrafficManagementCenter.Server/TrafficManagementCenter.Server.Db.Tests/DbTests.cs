@@ -82,11 +82,18 @@ namespace TrafficManagementCenter.Server.Db.Tests
             {
                 Email = "test@test.com"
             };
+            
+            var appeal2 = new Appeal()
+            {
+                Email = "test2@test.com"
+            };
 
-            var repos1 = new AppealRepository(new AppDbContext());
+            var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
 
-            repos1.Add(appeal);
+            ((AppealRepository)repos1).Add(appeal, "Замечание", "TestSubtype");
+            ((AppealRepository)repos1).Add(appeal2, "Замечание", "TestSubtype");
             repos1.Delete(appeal);
+            repos1.Delete(appeal2);
 
 
             Assert.Pass();
@@ -146,7 +153,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         {
             var classAppeal = new ClassAppeal()
             {
-                Name = "Предложение"
+                Name = "Замечание"
             };
 
             var repos = RepositoryFactory<ClassAppeal>.Create(new AppDbContext());
