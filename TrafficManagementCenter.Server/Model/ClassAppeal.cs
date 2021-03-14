@@ -1,10 +1,11 @@
-﻿namespace Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Model
 {
-    //todo mshuvalov: подумать над вынесением данной информации в базу
-    public enum ClassAppeal
+    public class ClassAppeal
     {
-        Сomplaint,
-        Request,
-        Suggestion
+        [Key]
+        public long Key {get;set;}
+        public string Name {get;set;}
     }
 }
