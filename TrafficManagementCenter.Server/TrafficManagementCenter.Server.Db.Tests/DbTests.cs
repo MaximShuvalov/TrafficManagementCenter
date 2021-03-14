@@ -3,6 +3,7 @@ using Model;
 using NUnit.Framework;
 using TrafficManagementCenter.Server.Db.Context;
 using TrafficManagementCenter.Server.Db.Extensions;
+using TrafficManagementCenter.Server.Db.Factory;
 using TrafficManagementCenter.Server.Db.Repositories;
 
 namespace TrafficManagementCenter.Server.Db.Tests
@@ -137,6 +138,24 @@ namespace TrafficManagementCenter.Server.Db.Tests
 
             repos.Delete(appeal);
             repos.Delete(appeal1);
+        }
+        
+        [Test]
+        [Explicit("Интеграционный")]
+        public void GetAllClassAppealsTest()
+        {
+            var classAppeal = new ClassAppeal()
+            {
+                Name = "Предложение"
+            };
+
+            var repos = RepositoryFactory<ClassAppeal>.Create(new AppDbContext());
+            
+            repos.Add(classAppeal);
+            
+            Assert.True(repos.GetEntities().Any());
+            
+            repos.Delete(classAppeal);
         }
     }
 }
