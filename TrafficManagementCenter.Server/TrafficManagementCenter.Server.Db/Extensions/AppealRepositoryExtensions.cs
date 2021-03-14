@@ -33,19 +33,9 @@ namespace TrafficManagementCenter.Server.Db.Extensions
             var classAppeal = classAppealRepository.GetEntities().FirstOrDefault(p => p.Name.Equals(nameClassAppeal));
             var subtypeAppeal = subtypeAppealRepository.GetEntities()
                 .FirstOrDefault(p => p.Name.Equals(nameSubtypeAppeal));
-
+            if (classAppeal is null || subtypeAppeal is null)
+                throw new Exception("The database does not contain the given object");
             appeal.SubtypeId = subtypeAppeal.Key;
-            appeal.ClassAppealId = classAppeal.Key;
-
-            repository.Add(appeal);
-        }
-        
-        public static void Add(this AppealRepository repository, Appeal appeal, string nameClassAppeal)
-        {
-            var classAppealRepository = RepositoryFactory<ClassAppeal>.Create(new AppDbContext());
-
-            var classAppeal = classAppealRepository.GetEntities().FirstOrDefault(p => p.Name.Equals(nameClassAppeal));
-            
             appeal.ClassAppealId = classAppeal.Key;
 
             repository.Add(appeal);
