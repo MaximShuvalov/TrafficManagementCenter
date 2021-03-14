@@ -21,7 +21,7 @@ namespace TrafficManagementCenter.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionDb = Configuration.GetConnectionString("DefaultConnection");
+            string connectionDb = Configuration.GetConnectionString("ConnectionDb");
             
             services.AddControllers();
             services.AddDbContext<AppDbContext>(

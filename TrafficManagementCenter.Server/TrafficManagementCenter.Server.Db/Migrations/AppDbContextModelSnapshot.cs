@@ -29,8 +29,8 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                     b.Property<string>("Attachment")
                         .HasColumnType("text");
 
-                    b.Property<int>("ClassAppeal")
-                        .HasColumnType("integer");
+                    b.Property<long?>("ClassAppealKey")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Email")
                         .HasColumnType("text");
@@ -43,9 +43,26 @@ namespace TrafficManagementCenter.Server.Db.Migrations
 
                     b.HasKey("Key");
 
+                    b.HasIndex("ClassAppealKey");
+
                     b.HasIndex("SubtypeKey");
 
                     b.ToTable("Appeal");
+                });
+
+            modelBuilder.Entity("Model.ClassAppeal", b =>
+                {
+                    b.Property<long>("Key")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Key");
+
+                    b.ToTable("ClassAppeal");
                 });
 
             modelBuilder.Entity("Model.SubtypeAppeal", b =>
@@ -91,9 +108,15 @@ namespace TrafficManagementCenter.Server.Db.Migrations
 
             modelBuilder.Entity("Model.Appeal", b =>
                 {
+                    b.HasOne("Model.ClassAppeal", "ClassAppeal")
+                        .WithMany()
+                        .HasForeignKey("ClassAppealKey");
+
                     b.HasOne("Model.SubtypeAppeal", "Subtype")
                         .WithMany()
                         .HasForeignKey("SubtypeKey");
+
+                    b.Navigation("ClassAppeal");
 
                     b.Navigation("Subtype");
                 });
