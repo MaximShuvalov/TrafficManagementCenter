@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
 
@@ -12,7 +13,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         {
             _context = context;
         }
-        
+
         public ClassAppeal Get(long id)
         {
             throw new System.NotImplementedException();
@@ -22,12 +23,18 @@ namespace TrafficManagementCenter.Server.Db.Repositories
 
         public void Add(ClassAppeal entity)
         {
-            throw new System.NotImplementedException();
+            if (entity is null)
+                throw new ArgumentException("ClassAppeal is null");
+            _context.ClassAppeal.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Delete(ClassAppeal entity)
         {
-            throw new System.NotImplementedException();
+            if (entity is null)
+                throw new ArgumentException("ClassAppeal is null");
+            _context.ClassAppeal.Remove(entity);
+            _context.SaveChanges();
         }
     }
 }
