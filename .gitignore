@@ -3,4 +3,5 @@
 bin/
 obj/
 .idea/
+*.cache
 TrafficManagementCenter.Server/TrafficManagementCenter.Server.sln.DotSettings.user
