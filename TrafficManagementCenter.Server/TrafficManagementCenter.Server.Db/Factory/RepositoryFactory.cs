@@ -18,6 +18,8 @@ namespace TrafficManagementCenter.Server.Db.Factory
                 return new TypeAppealRepository(context) as IRepository<T>;
             else if (typeof(T) == typeof(SubtypeAppeal))
                 return new SubtypeAppealRepository(context) as IRepository<T>;
+            else if (typeof(T) == typeof(ClassAppeal))
+                return new ClassAppealsRepository(context) as IRepository<T>;
             throw new Exception();
         }
     }
