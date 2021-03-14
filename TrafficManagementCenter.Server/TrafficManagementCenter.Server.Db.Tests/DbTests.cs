@@ -164,5 +164,28 @@ namespace TrafficManagementCenter.Server.Db.Tests
             
             repos.Delete(classAppeal);
         }
+        
+        [Test]
+        [Explicit("Интеграционный")]
+        public void GetAppealTest()
+        {
+            var appeal2 = new Appeal()
+            {
+                Key = 0205,
+                Email = "test2@test.com"
+            };
+
+            var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
+
+            ((AppealRepository)repos1).Add(appeal2, "Замечание", "TestSubtype");
+
+            var receivedAppeal = repos1.Get(appeal2.Key);
+            
+            Assert.True(receivedAppeal.Key.Equals(appeal2.Key));
+            Assert.True(receivedAppeal.Email.Equals(appeal2.Email));
+
+            //todo mshuvalov: проверка вложенных объекты
+            repos1.Delete(appeal2);
+        }
     }
 }
