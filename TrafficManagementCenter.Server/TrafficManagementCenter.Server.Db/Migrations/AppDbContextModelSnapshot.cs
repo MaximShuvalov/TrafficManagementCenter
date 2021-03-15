@@ -77,12 +77,12 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("text");
 
-                    b.Property<long>("TypeId")
+                    b.Property<long>("TypesId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Key");
 
-                    b.HasIndex("TypeId");
+                    b.HasIndex("TypesId");
 
                     b.ToTable("SubtypeAppeals");
                 });
@@ -128,7 +128,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 {
                     b.HasOne("Model.TypeAppeal", "Type")
                         .WithMany()
-                        .HasForeignKey("TypeId")
+                        .HasForeignKey("TypesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -11,7 +11,7 @@ namespace Model
         public string Note { get; set; }
         
         [ForeignKey("Type")]
-        public long TypeId {get;set;}
+        public long TypesId {get;set;}
         public TypeAppeal Type { get; set; }
     }
 }
