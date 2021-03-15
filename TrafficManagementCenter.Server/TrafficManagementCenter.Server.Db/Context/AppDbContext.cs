@@ -20,6 +20,7 @@ namespace TrafficManagementCenter.Server.Db.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //todo mshuvalov: забирать из конфига
             optionsBuilder.UseNpgsql(
                 "Server=127.0.0.1;Port=5433; Database=team1; Username=t1; Password=admin;");
         }
