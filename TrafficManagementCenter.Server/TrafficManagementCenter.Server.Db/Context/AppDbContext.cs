@@ -9,7 +9,7 @@ namespace TrafficManagementCenter.Server.Db.Context
             : base(options)
         {
             //Database.EnsureCreated();
-            Database.Migrate();
+            //Database.Migrate();
         }
 
         public AppDbContext()
@@ -21,7 +21,7 @@ namespace TrafficManagementCenter.Server.Db.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql(
-                "Server=127.0.0.1;Port=15433; Database=team1; Username=t1; Password=;");
+                "Server=127.0.0.1;Port=5433; Database=team1; Username=t1; Password=admin;");
         }
 
         public DbSet<Appeal> Appeal { get; set; }
