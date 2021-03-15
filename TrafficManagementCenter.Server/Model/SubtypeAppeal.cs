@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
@@ -8,6 +9,9 @@ namespace Model
         public long Key { get; set; }
         public string Name { get; set; }
         public string Note { get; set; }
+        
+        [ForeignKey("Type")]
+        public long TypeId {get;set;}
         public TypeAppeal Type { get; set; }
     }
 }
