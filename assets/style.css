@@ -93,8 +93,6 @@ h1{
 }
 
 .header__link {
-    margin-right: 120px;
-
     font-size: 18px;
 
     align-items: center;
@@ -102,12 +100,15 @@ h1{
 
     color: rgb(46, 46, 46);
     text-decoration: none;
+
+    transition: all .1s ease;
 }
 
 .header__link:hover {
     font-weight: 700;
     color: #223a76;
     text-decoration: underline;
+    transition: all .1s ease;
 }
 
 
@@ -137,7 +138,7 @@ h1{
     top: 0;
     right: 0;
 
-    background: url("img/intro.png") no-repeat center;
+    background: url("../img/intro.png") no-repeat center;
     background-size: cover;
     
     z-index: -1;
@@ -236,8 +237,8 @@ h1{
 
 .information {
     padding-top: 175px;
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 150px;
+    padding-right: 150px;
     padding-bottom: 120px;
 }
 
@@ -256,7 +257,7 @@ h1{
 }
 
 .contacts__title {
-    font-size: 48px;
+    font-size: 40px;
     color: #223a76;
 }
 
@@ -410,10 +411,6 @@ h1{
     line-height: 21px;
 
     color: white;
-}
-
-.footer__item{
-
 }
 
 .footer__title{
