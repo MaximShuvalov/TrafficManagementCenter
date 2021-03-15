@@ -42,8 +42,21 @@ namespace TrafficManagementCenter.Server.Controllers
         [HttpPost("addappeal")]
         public async Task<IActionResult> AddAppeal(Appeal appeal, string nameClassAppeal, string nameSubtypeAppeal)
         {
-            ((AppealRepository)RepositoryFactory<Appeal>.Create(_context)).Add(appeal, nameClassAppeal, nameSubtypeAppeal);
+            ((AppealRepository) RepositoryFactory<Appeal>.Create(_context)).Add(appeal, nameClassAppeal, nameSubtypeAppeal);
             return Ok();
+        }
+
+        [HttpGet("alltypes")]
+        public async Task<IActionResult> GetAllClassAppeal()
+        {
+            return Ok(RepositoryFactory<ClassAppeal>.Create(_context).GetEntities());
+        }
+        
+        [HttpGet("subtypesbytype")]
+        public async Task<IActionResult> GetSubtypeByTypeAppeal(string nameType)
+        {
+            return Ok(((SubtypeAppealRepository)RepositoryFactory<SubtypeAppeal>.Create(_context)).
+                GetSubtypeByTypeAppeal(nameType));
         }
     }
 }
