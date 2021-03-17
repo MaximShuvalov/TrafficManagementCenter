@@ -38,8 +38,6 @@ namespace TrafficManagementCenter.Server
             {
                 app.UseDeveloperExceptionPage();
             }
-            
-            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 
