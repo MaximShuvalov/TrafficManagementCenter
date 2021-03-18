@@ -1,19 +1,16 @@
-const request = new XMLHttpRequest();
+var myFetch = fetch('http://localhost:8888/api/citizens/alltypes');
 
-request.open('GET', 'http://localhost:5000/api/citizens/alltypes', true);
-request.send();
-request.response;
+myFetch.then(function(response) {
+  response.text().then(function(text) {
+    var sel = document.getElementById("typeappeal");
+    var options = JSON.parse(text)
 
-$.ajax({
-    url:'http://localhost:5000/api/citizens/alltypes',
-    type:'GET',
-    dataType: 'json',
-    success: function(data){
-        $.each(data, function(i, item){
-           $('<option value="'+item.val+'">'+item.text+'</option>').appendTo('#typeappeal');
-        });
-    },
-    error: function(){
-       console.log('err')
-    }
- });
+for (var i = 0; i<=options.length - 1; i++){
+    console.log(options[i]);
+    var opt = document.createElement('option');
+    opt.value = options[i].key;
+    opt.text = options[i].name;
+    sel.appendChild(opt);
+}
+  });
+});
