@@ -48,9 +48,9 @@ namespace TrafficManagementCenter.Server.Controllers
         }
 
         [HttpGet("alltypes")]
-        public async Task<IActionResult> GetAllClassAppeal()
+        public async Task<IActionResult> GetAllTypesAppeal()
         {
-            return Ok(RepositoryFactory<ClassAppeal>.Create(_context).GetEntities());
+            return Ok(RepositoryFactory<TypeAppeal>.Create(_context).GetEntities());
         }
         
         [HttpGet("subtypesbytype")]
