@@ -39,8 +39,17 @@ myFetchAllTypes.then(function(response) {
 
 function changeOption(){
   let option = typeSelect.options[typeSelect.selectedIndex];
-  let urlSubType  = new URL('http://localhost:8070/api/citizens/subtypesbytype?'), params = option.name;
-  let myFethcSubTypes = fetch(urlSubType);
+  let urlSubType  = new URL('http://localhost:8070/api/citizens/subtypesbytype?');
+  let params = {nameType:option.text};
+  urlSubType.search = new URLSearchParams(params).toString();
+  let myFethcSubTypes = fetch(urlSubType,{
+    headers:{
+      "Accept": "application/json",
+      "X-Requested-With": "XMLHttpRequest",
+      "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+    }
+  });
 
   myFethcSubTypes.then(function(response) {
     response.text().then(function(text) {
