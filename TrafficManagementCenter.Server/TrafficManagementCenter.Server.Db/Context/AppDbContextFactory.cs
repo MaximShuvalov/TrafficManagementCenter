@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace TrafficManagementCenter.Server.Db.Context
 {
@@ -7,8 +10,12 @@ namespace TrafficManagementCenter.Server.Db.Context
     {
         public AppDbContext CreateDbContext(string[] args)
         {
+            var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
+            .AddJsonFile("appsettings.json", false)
+            .Build();
             var builder = new DbContextOptionsBuilder<AppDbContext>();
-            builder.UseNpgsql("Server=127.0.0.1;Port=5432;Database=TrafficManagementCenter;Username=TestUser;Password=Qwerty123; Timeout=300; CommandTimeout=300");
+            builder.UseNpgsql(config.GetConnectionString("ConnectionDb"));
             return new AppDbContext(builder.Options);
         }
     }
