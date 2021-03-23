@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
 using TrafficManagementCenter.Server.Db.Factory;
@@ -10,28 +11,29 @@ namespace TrafficManagementCenter.Server.Db.Extensions
 {
     public static class AppealRepositoryExtensions
     {
-        public static long GetIdByEmailAndText(this AppealRepository repos, string email, string text)
+        public static async Task<long> GetIdByEmailAndTextAsync(this AppealRepository repos, string email, string text)
         {
-            // ReSharper disable once PossibleNullReferenceException
-            return repos.GetEntities().FirstOrDefault(p
+            var entities = await repos.GetEntities();
+            return entities.FirstOrDefault(p
                 => p.Email.Equals(email) && p.Text.Equals(text)).Key;
         }
 
-        public static IEnumerable<Appeal> GetEntitiesByEmail(this AppealRepository repository, string email)
+        public async static Task<IEnumerable<Appeal>> GetEntitiesByEmail(this AppealRepository repository, string email)
         {
             if (string.IsNullOrEmpty(email))
                 throw new ArgumentException($"Error receiving appeals email = {email}");
-            return repository.GetEntities().Where(p => p.Email.Equals(email));
+            var appeals = await repository.GetEntities();
+            return appeals.Where(p => p.Email.Equals(email));
         }
 
-        public static void Add(this AppealRepository repository, Appeal appeal, string nameClassAppeal,
+        public async static void Add(this AppealRepository repository, Appeal appeal, string nameClassAppeal,
             string nameSubtypeAppeal)
         {
             var classAppealRepository = RepositoryFactory<ClassAppeal>.Create(new AppDbContext());
             var subtypeAppealRepository = RepositoryFactory<SubtypeAppeal>.Create(new AppDbContext());
 
-            var classAppeal = classAppealRepository.GetEntities().FirstOrDefault(p => p.Name.Equals(nameClassAppeal));
-            var subtypeAppeal = subtypeAppealRepository.GetEntities()
+            var classAppeal = (await classAppealRepository.GetEntities()).FirstOrDefault(p => p.Name.Equals(nameClassAppeal));
+            var subtypeAppeal = (await subtypeAppealRepository.GetEntities())
                 .FirstOrDefault(p => p.Name.Equals(nameSubtypeAppeal));
             if (classAppeal is null || subtypeAppeal is null)
                 throw new Exception("The database does not contain the given object");

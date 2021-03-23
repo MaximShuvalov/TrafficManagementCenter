@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
 
@@ -16,7 +17,9 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         }
         public TypeAppeal Get(long id) => _context.TypeAppeal.FirstOrDefault(p => p.Key.Equals(id));
 
-        public IEnumerable<TypeAppeal> GetEntities() => _context.TypeAppeal;
+        public async Task<IEnumerable<TypeAppeal>> GetEntities() => await Task.Run(()=>{
+            return _context.TypeAppeal;
+        });
 
         public void Add(TypeAppeal entity)
         {
