@@ -42,14 +42,7 @@ function changeOption(){
   let urlSubType  = new URL('http://localhost:8070/api/citizens/subtypesbytype?');
   let params = {nameType:option.text};
   urlSubType.search = new URLSearchParams(params).toString();
-  let myFethcSubTypes = fetch(urlSubType,{
-    headers:{
-      "Accept": "application/json",
-      "X-Requested-With": "XMLHttpRequest",
-      "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
-    }
-  });
+  let myFethcSubTypes = fetch(urlSubType);
 
   myFethcSubTypes.then(function(response) {
     response.text().then(function(text) {
