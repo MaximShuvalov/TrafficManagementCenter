@@ -23,7 +23,7 @@ namespace TrafficManagementCenter.Server
         public void ConfigureServices(IServiceCollection services)
         {
             string connectionDb = Configuration.GetConnectionString("ConnectionDb");
-            
+            services.AddCors();
             services.AddControllers();
             services.AddDbContext<AppDbContext>(
             options => options.UseNpgsql(connectionDb)
@@ -41,14 +41,20 @@ namespace TrafficManagementCenter.Server
 
             app.UseHttpsRedirection();
 
+            app.UseCors(builder =>
+                builder.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+            );
+
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
-			{
-    			ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-			});
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
