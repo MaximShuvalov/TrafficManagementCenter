@@ -42,9 +42,10 @@ namespace TrafficManagementCenter.Server
             app.UseHttpsRedirection();
 
             app.UseCors(builder =>
-                builder.AllowAnyOrigin()
-                .AllowAnyHeader()
+                builder.AllowAnyHeader()
                 .AllowAnyMethod()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials()
             );
 
             app.UseRouting();
