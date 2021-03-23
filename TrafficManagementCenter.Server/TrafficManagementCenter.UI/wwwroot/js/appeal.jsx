@@ -1,5 +1,5 @@
-var urlAllTypes = 'http://localhost:8888/api/citizens/alltypes';
-var urlAllClasses  = 'http://localhost:8888/api/citizens/allclasses';
+var urlAllTypes = 'http://localhost:8070/api/citizens/alltypes';
+var urlAllClasses  = 'http://localhost:8070/api/citizens/allclasses';
 
 
 var typeSelect = document.getElementById("typeappeal");
@@ -39,7 +39,7 @@ myFetchAllTypes.then(function(response) {
 
 function changeOption(){
   let option = typeSelect.options[typeSelect.selectedIndex];
-  let urlSubType  = new URL('http://localhost:8888/api/citizens/subtypesbytype?'), params = option.name;
+  let urlSubType  = new URL('http://localhost:8070/api/citizens/subtypesbytype?'), params = option.name;
   let myFethcSubTypes = fetch(urlSubType);
 
   myFethcSubTypes.then(function(response) {
