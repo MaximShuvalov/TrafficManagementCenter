@@ -30,13 +30,13 @@ namespace TrafficManagementCenter.Server.Controllers
         [HttpGet("all")]
         public async Task<IActionResult> GetAllAppeal()
         {
-            return Ok(RepositoryFactory<Appeal>.Create(_context).GetEntities());
+            return Ok(await RepositoryFactory<Appeal>.Create(_context).GetEntities());
         }
 
         [HttpGet("allbyemail")]
         public async Task<IActionResult> GetAllAppealsByEmail(string email)
         {
-            return Ok(((AppealRepository) RepositoryFactory<Appeal>.Create(_context)).GetEntitiesByEmail(email));
+            return Ok(await ((AppealRepository) RepositoryFactory<Appeal>.Create(_context)).GetEntitiesByEmail(email));
         }
 
         [HttpPost("addappeal")]
@@ -50,20 +50,20 @@ namespace TrafficManagementCenter.Server.Controllers
         [HttpGet("alltypes")]
         public async Task<IActionResult> GetAllTypesAppeal()
         {
-            return Ok(RepositoryFactory<TypeAppeal>.Create(_context).GetEntities());
+            return Ok(await RepositoryFactory<TypeAppeal>.Create(_context).GetEntities());
         }
 
         [HttpGet("allclasses")]
         public async Task<IActionResult> GetAllClassesAppeal()
         {
-            return Ok(RepositoryFactory<ClassAppeal>.Create(_context).GetEntities());
+            return Ok(await RepositoryFactory<ClassAppeal>.Create(_context).GetEntities());
         }
 
         [HttpGet("subtypesbytype")]
         public async Task<IActionResult> GetSubtypeByTypeAppeal(string nameType)
         {
-            return Ok(((SubtypeAppealRepository) RepositoryFactory<SubtypeAppeal>.Create(_context))
-                .GetSubtypeByTypeAppeal(nameType));
+            return Ok( await ((SubtypeAppealRepository) RepositoryFactory<SubtypeAppeal>.Create(_context))
+                .GetSubtypeByTypeAppealAsync(nameType));
         }
     }
 }

@@ -29,7 +29,7 @@ namespace TrafficManagementCenter.Server.Controllers
         public async Task<IActionResult> GetAllTypeAppeal()
         {
             var repos = new TypeAppealRepository(_context); 
-            var typesAppeal = repos.GetEntities();
+            var typesAppeal = await repos.GetEntities();
             return Ok(typesAppeal);
         }
         

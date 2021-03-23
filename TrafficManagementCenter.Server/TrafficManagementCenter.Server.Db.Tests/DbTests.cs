@@ -49,7 +49,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
 
         [Test]
         [Explicit("Интеграционный")]
-        public void GetAllAppealTest()
+        public async void GetAllAppealTest()
         {
             var appeal = new Appeal()
             {
@@ -66,7 +66,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
             repos.Add(appeal);
             repos.Add(appeal1);
 
-            var appeals = repos.GetEntities();
+            var appeals = await repos.GetEntities();
 
             Assert.IsTrue(appeals.ToList().Count() > 0);
 
@@ -101,7 +101,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
 
         [Test]
         [Explicit("Интеграционный")]
-        public void GetAppealByIdTest()
+        public async void GetAppealByIdTest()
         {
             var appeal = new Appeal()
             {
@@ -112,7 +112,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
             var repos1 = new AppealRepository(new AppDbContext());
 
             repos1.Add(appeal);
-            var keyAppeal = repos1.GetIdByEmailAndText(appeal.Email, appeal.Text);
+            var keyAppeal = await repos1.GetIdByEmailAndTextAsync(appeal.Email, appeal.Text);
             var appealFromDb = repos1.Get(keyAppeal);
             Assert.AreEqual(appeal.Email, appealFromDb.Email);
             repos1.Delete(appeal);
@@ -120,7 +120,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         
         [Test]
         [Explicit("Интеграционный")]
-        public void GetAllAppealByEmailTest()
+        public async void GetAllAppealByEmailTest()
         {
             var appeal = new Appeal()
             {
@@ -139,7 +139,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
             repos.Add(appeal);
             repos.Add(appeal1);
 
-            var appeals = repos.GetEntitiesByEmail("test@test.com");
+            var appeals = await repos.GetEntitiesByEmail("test@test.com");
 
             Assert.IsTrue(appeals.ToList().Count() > 1);
 
@@ -149,7 +149,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
         
         [Test]
         [Explicit("Интеграционный")]
-        public void GetAllClassAppealsTest()
+        public async void GetAllClassAppealsTest()
         {
             var classAppeal = new ClassAppeal()
             {
@@ -160,7 +160,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
             
             repos.Add(classAppeal);
             
-            Assert.True(repos.GetEntities().Any());
+            Assert.True((await repos.GetEntities()).Any());
             
             repos.Delete(classAppeal);
         }

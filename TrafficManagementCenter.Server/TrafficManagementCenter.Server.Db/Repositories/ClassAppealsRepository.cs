@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
 
@@ -20,7 +21,9 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<ClassAppeal> GetEntities() => _context.ClassAppeal;
+        public async Task<IEnumerable<ClassAppeal>> GetEntities() => await Task.Run(() => { 
+            return _context.ClassAppeal; 
+            });
 
         public void Add(ClassAppeal entity)
         {

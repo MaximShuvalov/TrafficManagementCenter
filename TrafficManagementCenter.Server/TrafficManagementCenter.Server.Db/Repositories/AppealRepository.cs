@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
@@ -20,8 +21,11 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             .Include(o => o.Subtype)
             .FirstOrDefault(p => p.Key.Equals(id));
 
-        public IEnumerable<Appeal> GetEntities() => _context.Appeal.Include(p => p.ClassAppeal)
+        public async Task<IEnumerable<Appeal>> GetEntities() => await Task.Run(() =>
+        {
+            return _context.Appeal.Include(p => p.ClassAppeal)
             .Include(o => o.Subtype);
+        });
 
         public void Add(Appeal entity)
         {
