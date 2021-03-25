@@ -68,7 +68,6 @@ typeSelect.addEventListener("change", changeOption);
 function postAppeal(){
   let subtypeName = subtypeSelect.options[subtypeSelect.selectedIndex].text;
   let classAppealName = classAppealSelect.options[classAppealSelect.selectedIndex].text;
-  let option = typeSelect.options[typeSelect.selectedIndex];
   let urlSubType  = new URL('http://localhost:8070/api/citizens/addappeal?');
   let params = {nameClass:classAppealName, nameSubtype: subtypeName};
   urlSubType.search = new URLSearchParams(params).toString();
@@ -88,14 +87,19 @@ function postAppeal(){
     },
     redirect: 'follow',
     referrerPolicy: 'no-referrer',
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
+    body: JSON.stringify(data)
   });
 
-  answerServer.then(function(response) {
-    response.text().then(function(text) {
-      console.log(text);
-    });
-  });
+  clearForm();
+}
+
+function clearForm(){
+  document.getElementById("input_email").value = '';
+  document.getElementById("input_message").value = '';
+  document.querySelector("#subtypesappeal").value = "10";
+  document.querySelector("#typeappeal").value = "10";
+  document.querySelector("#classappeal").value = "10";
+  document.getElementById("check").checked = false;
 }
 
 
