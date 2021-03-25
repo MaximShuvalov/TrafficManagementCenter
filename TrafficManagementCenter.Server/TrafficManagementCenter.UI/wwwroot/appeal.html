@@ -71,12 +71,12 @@
                 </p>
 
                 <p>
-                    <br> •	отправляя с помощью данной формы официальное обращение, Вы подтверждаете свое согласие на передачу информации в электронной форме (в том числе персональных данных) по открытым каналам связи сети Интернет;
-                    <br> •	сообщения, содержащие угрозы, оскорбления или ненормативную лексику, рассматриваться не будут;
+                    <br> • отправляя с помощью данной формы официальное обращение, Вы подтверждаете свое согласие на передачу информации в электронной форме (в том числе персональных данных) по открытым каналам связи сети Интернет;
+                    <br> • сообщения, содержащие угрозы, оскорбления или ненормативную лексику, рассматриваться не будут;
                 </p>
 
                 <p>
-                   <br> Для отправки обращения необходимо корректно заполнить все поля, которые есть в форме.
+                    <br> Для отправки обращения необходимо корректно заполнить все поля, которые есть в форме.
                 </p>
 
             </div>
@@ -90,8 +90,8 @@
                         <div class="appeal__right-subtitle">
                             Класс обращения
                         </div>
-                        <select id="classappeal"  class="appeal__select">
-                            <option disabled selected="selected">Выберите класс обращения</option></select>
+                        <select id="classappeal" class="appeal__select">
+                            <option selected="selected" value="10">Выберите класс обращения</option></select>
                     </div>
 
                     <div class="appeal__right-item">
@@ -99,7 +99,7 @@
                             Участники дорожного движения
                         </div>
                         <select id="typeappeal" class="appeal__select">
-                            <option disabled selected="selected">Выберите тип участника дорожного движения</option>
+                            <option selected="selected" value="10">Выберите тип участника дорожного движения</option>
                         </select>
                     </div>
 
@@ -108,7 +108,7 @@
                             Выберите тип обращения
                         </div>
                         <select id="subtypesappeal" class="appeal__select">
-                            <option>Выберите тип обращения</option>
+                            <option selected="selected" value="10">Выберите тип обращения</option>
                         </select>
                     </div>
 
@@ -116,44 +116,44 @@
                         <div class="appeal__right-subtitle">
                             Email
                         </div>
-                        <input type="email" required placeholder="Часто используемый Email" class="appeal__iput-email">
+                        <input type="email" required placeholder="Часто используемый Email" class="appeal__iput-email" id="input_email">
                     </div>
 
                     <div class="appeal__right-item">
                         <div class="appeal__right-subtitle">
                             Сообщение
                         </div>
-                        <input type="text" required placeholder="Введите ваше обращение" class="appeal__message">
+                        <input type="text" required placeholder="Введите ваше обращение" class="appeal__message" id="input_message">
                     </div>
 
                     <div class="appeal__right-item">
 
                         <i class="fas fa-paperclip"></i>
-                        <input type="file"  >
-                        
+                        <input type="file">
+
                     </div>
 
                     <div class="appeal__right-item">
 
-                        <input type="checkbox"> Я согласен / cогласна на обработку персональных данных
-                        
+                        <input type="checkbox" id="check"> Я согласен / cогласна на обработку персональных данных
+
                     </div>
 
                     <div class="button">
-                        <button>Отправить</button>
+                        <button onclick="postAppeal()">Отправить</button>
                     </div>
-                        
+
 
                 </div>
 
             </div>
         </div>
     </div>
-    
+
 
     <footer class="footer">
         <div class="footer__inner">
-            
+
             <div class="footer__item">
 
                 <div class="footer__title">
@@ -168,7 +168,7 @@
                     <a class="footer__link" href="">Обращение граждан</a>
 
                 </div>
-                
+
 
             </div>
 
@@ -205,7 +205,7 @@
                         <i class="fab fa-twitter"></i>
                     </a>
                 </div>
-                
+
             </div>
 
             <div class="footer__item">
@@ -230,7 +230,7 @@
 
         </div>
     </footer>
-   
+
 
 
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/16.11.0/umd/react.development.js"></script>
