@@ -43,7 +43,7 @@ namespace TrafficManagementCenter.Server.Controllers
         public async Task<IActionResult> AddAppeal([FromBody] Appeal appeal, [FromQuery] string nameClass,
             [FromQuery] string nameSubtype)
         {
-            ((AppealRepository) RepositoryFactory<Appeal>.Create(_context)).Add(appeal, nameClass, nameSubtype);
+            ((AppealRepository) RepositoryFactory<Appeal>.Create(_context)).Add(appeal, nameClass, nameSubtype, _context);
             return Ok();
         }
 

@@ -27,10 +27,10 @@ namespace TrafficManagementCenter.Server.Db.Extensions
         }
 
         public async static void Add(this AppealRepository repository, Appeal appeal, string nameClassAppeal,
-            string nameSubtypeAppeal)
+            string nameSubtypeAppeal, AppDbContext context)
         {
-            var classAppealRepository = RepositoryFactory<ClassAppeal>.Create(new AppDbContext());
-            var subtypeAppealRepository = RepositoryFactory<SubtypeAppeal>.Create(new AppDbContext());
+            var classAppealRepository = RepositoryFactory<ClassAppeal>.Create(context);
+            var subtypeAppealRepository = RepositoryFactory<SubtypeAppeal>.Create(context);
 
             var classAppeal = (await classAppealRepository.GetEntities()).FirstOrDefault(p => p.Name.Equals(nameClassAppeal));
             var subtypeAppeal = (await subtypeAppealRepository.GetEntities())
