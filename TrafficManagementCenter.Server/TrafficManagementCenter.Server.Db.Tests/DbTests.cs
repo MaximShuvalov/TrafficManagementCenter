@@ -177,7 +177,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
 
             var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
 
-            ((AppealRepository)repos1).Add(appeal2, "Замечание", "TestSubtype");
+            ((AppealRepository)repos1).Add(appeal2, "Замечание", "TestSubtype", new AppDbContext());
 
             var receivedAppeal = repos1.Get(appeal2.Key);
             
