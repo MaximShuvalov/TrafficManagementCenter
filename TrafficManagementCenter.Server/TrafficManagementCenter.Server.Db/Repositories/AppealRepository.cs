@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
+using TrafficManagementCenter.Server.Db.Factory;
 
 namespace TrafficManagementCenter.Server.Db.Repositories
 {
@@ -39,6 +40,23 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             if (entity is null)
                 throw new ArgumentException("Appeal is null");
             _context.Appeal.Remove(entity);
+        }
+        
+        public async Task Add(Appeal appeal, string nameClassAppeal,
+            string nameSubtypeAppeal)
+        {
+            var classAppealRepository = RepositoryFactory<AppealClass>.Create(_context);
+            var subtypeAppealRepository = RepositoryFactory<SubtypeAppeal>.Create(_context);
+
+            var classAppeal = (await classAppealRepository.GetEntities()).FirstOrDefault(p => p.Name.Equals(nameClassAppeal));
+            var subtypeAppeal = (await subtypeAppealRepository.GetEntities())
+                .FirstOrDefault(p => p.Name.Equals(nameSubtypeAppeal));
+            if (classAppeal is null || subtypeAppeal is null)
+                throw new Exception("The database does not contain the given object");
+            appeal.SubtypeId = subtypeAppeal.Key;
+            appeal.ClassAppealId = classAppeal.Key;
+
+            await Add(appeal);
         }
     }
 }

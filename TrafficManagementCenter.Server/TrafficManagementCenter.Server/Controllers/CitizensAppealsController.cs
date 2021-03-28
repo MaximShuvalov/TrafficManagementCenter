@@ -50,7 +50,7 @@ namespace TrafficManagementCenter.Server.Controllers
             //todo mshuvalov: подумать на передачей контекста
             using (_uow)
             {
-                await ((AppealRepository) _uow.GetRepositories<Appeal>()).Add(appeal, nameClass, nameSubtype, _context);
+                await ((AppealRepository) _uow.GetRepositories<Appeal>()).Add(appeal, nameClass, nameSubtype);
                 _uow.Commit();
             }
 
