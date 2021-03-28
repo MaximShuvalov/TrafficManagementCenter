@@ -3,10 +3,23 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace TrafficManagementCenter.Server.Db.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class RenameModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "ClassAppeal",
+                columns: table => new
+                {
+                    Key = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClassAppeal", x => x.Key);
+                });
+
             migrationBuilder.CreateTable(
                 name: "TypeAppeal",
                 columns: table => new
@@ -29,17 +42,17 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: true),
                     Note = table.Column<string>(type: "text", nullable: true),
-                    TypeKey = table.Column<long>(type: "bigint", nullable: true)
+                    TypesId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SubtypeAppeals", x => x.Key);
                     table.ForeignKey(
-                        name: "FK_SubtypeAppeals_TypeAppeal_TypeKey",
-                        column: x => x.TypeKey,
+                        name: "FK_SubtypeAppeals_TypeAppeal_TypesId",
+                        column: x => x.TypesId,
                         principalTable: "TypeAppeal",
                         principalColumn: "Key",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,7 +61,8 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 {
                     Key = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    SubtypeKey = table.Column<long>(type: "bigint", nullable: true),
+                    SubtypeId = table.Column<long>(type: "bigint", nullable: false),
+                    ClassAppealId = table.Column<long>(type: "bigint", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: true),
                     Text = table.Column<string>(type: "text", nullable: true),
                     Attachment = table.Column<string>(type: "text", nullable: true)
@@ -57,28 +71,42 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 {
                     table.PrimaryKey("PK_Appeal", x => x.Key);
                     table.ForeignKey(
-                        name: "FK_Appeal_SubtypeAppeals_SubtypeKey",
-                        column: x => x.SubtypeKey,
+                        name: "FK_Appeal_ClassAppeal_ClassAppealId",
+                        column: x => x.ClassAppealId,
+                        principalTable: "ClassAppeal",
+                        principalColumn: "Key",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Appeal_SubtypeAppeals_SubtypeId",
+                        column: x => x.SubtypeId,
                         principalTable: "SubtypeAppeals",
                         principalColumn: "Key",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Appeal_SubtypeKey",
+                name: "IX_Appeal_ClassAppealId",
                 table: "Appeal",
-                column: "SubtypeKey");
+                column: "ClassAppealId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SubtypeAppeals_TypeKey",
+                name: "IX_Appeal_SubtypeId",
+                table: "Appeal",
+                column: "SubtypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SubtypeAppeals_TypesId",
                 table: "SubtypeAppeals",
-                column: "TypeKey");
+                column: "TypesId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Appeal");
+
+            migrationBuilder.DropTable(
+                name: "ClassAppeal");
 
             migrationBuilder.DropTable(
                 name: "SubtypeAppeals");
