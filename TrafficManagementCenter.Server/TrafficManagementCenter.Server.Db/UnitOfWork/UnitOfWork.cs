@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using Model;
 using TrafficManagementCenter.Server.Db.Context;
 using TrafficManagementCenter.Server.Db.Repositories;
@@ -9,9 +10,9 @@ namespace TrafficManagementCenter.Server.Db.UnitOfWork
     {
         private readonly AppDbContext _context;
 
-        public UnitOfWork(AppDbContext context)
+        public UnitOfWork(IServiceProvider provider)
         {
-            _context = context;
+            _context = provider.GetService<AppDbContext>();
         }
         
         public IRepository<T> GetRepositories<T>()
@@ -37,10 +38,6 @@ namespace TrafficManagementCenter.Server.Db.UnitOfWork
         {
             if (!this._disposed)
             {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
                 this._disposed = true;
             }
         }
