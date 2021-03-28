@@ -32,7 +32,6 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             if (entity is null)
                 throw new ArgumentException("Appeal is null");
             _context.Appeal.Add(entity);
-            _context.SaveChanges();
         });
 
         public void Delete(Appeal entity)
@@ -40,7 +39,6 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             if (entity is null)
                 throw new ArgumentException("Appeal is null");
             _context.Appeal.Remove(entity);
-            _context.SaveChanges();
         }
     }
 }

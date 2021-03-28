@@ -1,16 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Model;
 using TrafficManagementCenter.Server.Db.Repositories;
+using TrafficManagementCenter.Server.Db.UnitOfWork;
 
 namespace TrafficManagementCenter.Server.Db.DI
 {
     public static class DependencyInjection
     {
-        public static void AddRepositories(this IServiceCollection services)
+        public static void AddDb(this IServiceCollection services)
         {
-            services.AddScoped<IRepository<Appeal>, AppealRepository>();
-            services.AddScoped<IRepository<TypeAppeal>, TypeAppealRepository>();
-            services.AddScoped<IRepository<SubtypeAppeal>, SubtypeAppealRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
         }
     }
 }
