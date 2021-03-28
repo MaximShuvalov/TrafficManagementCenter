@@ -18,7 +18,7 @@ namespace TrafficManagementCenter.Server.Db.Extensions
                 => p.Email.Equals(email) && p.Text.Equals(text)).Key;
         }
 
-        public async static Task<IEnumerable<Appeal>> GetEntitiesByEmail(this AppealRepository repository, string email)
+        public static async Task<IEnumerable<Appeal>> GetEntitiesByEmail(this AppealRepository repository, string email)
         {
             if (string.IsNullOrEmpty(email))
                 throw new ArgumentException($"Error receiving appeals email = {email}");
@@ -26,7 +26,7 @@ namespace TrafficManagementCenter.Server.Db.Extensions
             return appeals.Where(p => p.Email.Equals(email));
         }
 
-        public async static void Add(this AppealRepository repository, Appeal appeal, string nameClassAppeal,
+        public static async void Add(this AppealRepository repository, Appeal appeal, string nameClassAppeal,
             string nameSubtypeAppeal, AppDbContext context)
         {
             var classAppealRepository = RepositoryFactory<AppealClass>.Create(context);
