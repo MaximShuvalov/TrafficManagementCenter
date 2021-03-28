@@ -21,11 +21,9 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             throw new System.NotImplementedException();
         }
 
-        public async Task<IEnumerable<AppealClass>> GetEntities() => await Task.Run(() => { 
-            return _context.ClassAppeal; 
-            });
+        public async Task<IEnumerable<AppealClass>> GetEntities() => await Task.Run(() => _context.ClassAppeal);
 
-        public void Add(AppealClass entity)
+        public async Task Add(AppealClass entity) => await Task.Run(() =>
         {
             if (entity is null)
                 throw new ArgumentException("AppealClass is null");
@@ -33,7 +31,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
                 return;
             _context.ClassAppeal.Add(entity);
             _context.SaveChanges();
-        }
+        });
 
         public void Delete(AppealClass entity)
         {

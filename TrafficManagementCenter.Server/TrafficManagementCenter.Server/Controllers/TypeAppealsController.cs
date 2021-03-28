@@ -36,7 +36,7 @@ namespace TrafficManagementCenter.Server.Controllers
         public async Task<IActionResult> AddTypeAppeal(TypeAppeal typeAppeal)
         {
             var repos = new TypeAppealRepository(_context); 
-            repos.Add(typeAppeal);
+             await repos.Add(typeAppeal);
             return Ok();
         }
     }
