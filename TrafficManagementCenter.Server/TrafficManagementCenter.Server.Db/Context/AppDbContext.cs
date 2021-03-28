@@ -27,7 +27,6 @@ namespace TrafficManagementCenter.Server.Db.Context
                 .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
                 .AddJsonFile("appsettings.json", false)
                 .Build();
-            //todo mshuvalov: забирать из конфига
             optionsBuilder.UseNpgsql(config.GetConnectionString("ConnectionDb"));
         }
 
