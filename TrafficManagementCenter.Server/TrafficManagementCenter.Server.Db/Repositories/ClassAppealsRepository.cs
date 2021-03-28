@@ -30,7 +30,6 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             if (_context.ClassAppeal.Contains(entity))
                 return;
             _context.ClassAppeal.Add(entity);
-            _context.SaveChanges();
         });
 
         public void Delete(AppealClass entity)
@@ -38,7 +37,6 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             if (entity is null)
                 throw new ArgumentException("AppealClass is null");
             _context.ClassAppeal.Remove(entity);
-            _context.SaveChanges();
         }
     }
 }

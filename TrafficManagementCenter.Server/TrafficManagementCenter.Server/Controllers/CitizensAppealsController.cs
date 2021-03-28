@@ -6,6 +6,7 @@ using TrafficManagementCenter.Server.Db.Context;
 using TrafficManagementCenter.Server.Db.Extensions;
 using TrafficManagementCenter.Server.Db.Factory;
 using TrafficManagementCenter.Server.Db.Repositories;
+using TrafficManagementCenter.Server.Db.UnitOfWork;
 
 namespace TrafficManagementCenter.Server.Controllers
 {
@@ -13,11 +14,13 @@ namespace TrafficManagementCenter.Server.Controllers
     [ApiController]
     public class CitizensAppealsController : ControllerBase
     {
-        private AppDbContext _context;
+        private readonly AppDbContext _context;
+        private readonly IUnitOfWork _uow;
 
-        public CitizensAppealsController(AppDbContext context)
+        public CitizensAppealsController(AppDbContext context, IUnitOfWork uow)
         {
             _context = context;
+            _uow = uow;
         }
 
         [HttpGet("ping")]
@@ -29,40 +32,50 @@ namespace TrafficManagementCenter.Server.Controllers
         [HttpGet("all")]
         public async Task<IActionResult> GetAllAppeal()
         {
-            return Ok(await RepositoryFactory<Appeal>.Create(_context).GetEntities());
+            using (_uow)
+                return Ok(await _uow.GetRepositories<Appeal>().GetEntities());
         }
 
         [HttpGet("allbyemail")]
         public async Task<IActionResult> GetAllAppealsByEmail(string email)
         {
-            return Ok(await ((AppealRepository) RepositoryFactory<Appeal>.Create(_context)).GetEntitiesByEmail(email));
+            using (_uow)
+                return Ok(await ((AppealRepository) _uow.GetRepositories<Appeal>()).GetEntitiesByEmail(email));
         }
 
         [HttpPost("addappeal")]
         public async Task<IActionResult> AddAppeal([FromBody] Appeal appeal, [FromQuery] string nameClass,
             [FromQuery] string nameSubtype)
         {
-            await ((AppealRepository) RepositoryFactory<Appeal>.Create(_context)).Add(appeal, nameClass, nameSubtype, _context);
+            //todo mshuvalov: подумать на передачей контекста
+            using (_uow)
+            {
+                await ((AppealRepository) _uow.GetRepositories<Appeal>()).Add(appeal, nameClass, nameSubtype);
+                _uow.Commit();
+            }
+
             return Ok();
         }
 
         [HttpGet("alltypes")]
         public async Task<IActionResult> GetAllTypesAppeal()
         {
-            return Ok(await RepositoryFactory<TypeAppeal>.Create(_context).GetEntities());
+            using(_uow)
+                return Ok(await _uow.GetRepositories<TypeAppeal>().GetEntities());
         }
 
         [HttpGet("allclasses")]
         public async Task<IActionResult> GetAllClassesAppeal()
         {
-            return Ok(await RepositoryFactory<AppealClass>.Create(_context).GetEntities());
+            using(_uow)
+                return Ok(await _uow.GetRepositories<AppealClass>().GetEntities());
         }
 
         [HttpGet("subtypesbytype")]
         public async Task<IActionResult> GetSubtypeByTypeAppeal(string nameType)
         {
-            return Ok( await ((SubtypeAppealRepository) RepositoryFactory<SubtypeAppeal>.Create(_context))
-                .GetSubtypeByTypeAppealAsync(nameType));
+            using(_uow)
+                return Ok( await ((SubtypeAppealRepository) _uow.GetRepositories<SubtypeAppeal>()).GetSubtypeByTypeAppealAsync(nameType));
         }
     }
 }

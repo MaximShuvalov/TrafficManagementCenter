@@ -61,7 +61,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
 
                     b.HasKey("Key");
 
-                    b.ToTable("AppealClass");
+                    b.ToTable("ClassAppeal");
                 });
 
             modelBuilder.Entity("Model.SubtypeAppeal", b =>

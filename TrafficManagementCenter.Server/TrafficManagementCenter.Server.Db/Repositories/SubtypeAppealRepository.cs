@@ -30,7 +30,6 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             if (entity is null)
                 throw new ArgumentException("SubtypeAppeal is null");
             _context.SubtypeAppeals.Add(entity);
-            _context.SaveChanges();
         });
 
         public void Delete(SubtypeAppeal entity)
@@ -38,7 +37,6 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             if (entity is null)
                 throw new ArgumentException("SubtypeAppeal is null");
             _context.SubtypeAppeals.Remove(entity);
-            _context.SaveChanges();
         }
     }
 }

@@ -90,8 +90,8 @@ namespace TrafficManagementCenter.Server.Db.Tests
 
             var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
 
-            ((AppealRepository)repos1).Add(appeal, "Замечание", "TestSubtype", new AppDbContext());
-            ((AppealRepository)repos1).Add(appeal2, "Замечание", "TestSubtype", new AppDbContext());
+            ((AppealRepository)repos1).Add(appeal, "Замечание", "TestSubtype");
+            ((AppealRepository)repos1).Add(appeal2, "Замечание", "TestSubtype");
             repos1.Delete(appeal);
             repos1.Delete(appeal2);
 
@@ -177,7 +177,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
 
             var repos1 = RepositoryFactory<Appeal>.Create(new AppDbContext());
 
-            ((AppealRepository)repos1).Add(appeal2, "Замечание", "TestSubtype", new AppDbContext());
+            ((AppealRepository)repos1).Add(appeal2, "Замечание", "TestSubtype");
 
             var receivedAppeal = repos1.Get(appeal2.Key);
             
