@@ -10,7 +10,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
 
         Task<IEnumerable<T>> GetEntities();
 
-        void Add(T entity);
+        Task Add(T entity);
 
         void Delete(T entity);
     }

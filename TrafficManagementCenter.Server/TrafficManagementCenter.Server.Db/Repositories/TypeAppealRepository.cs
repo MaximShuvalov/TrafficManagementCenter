@@ -17,17 +17,15 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         }
         public TypeAppeal Get(long id) => _context.TypeAppeal.FirstOrDefault(p => p.Key.Equals(id));
 
-        public async Task<IEnumerable<TypeAppeal>> GetEntities() => await Task.Run(()=>{
-            return _context.TypeAppeal;
-        });
+        public async Task<IEnumerable<TypeAppeal>> GetEntities() => await Task.Run(()=> _context.TypeAppeal);
 
-        public void Add(TypeAppeal entity)
+        public async Task Add(TypeAppeal entity) => await Task.Run(() =>
         {
             if (entity is null)
                 throw new ArgumentException("TypeAppeal is null");
             _context.TypeAppeal.Add(entity);
             _context.SaveChanges();
-        }
+        });
 
         public void Delete(TypeAppeal entity)
         {

@@ -26,7 +26,7 @@ namespace TrafficManagementCenter.Server.Db.Extensions
             return appeals.Where(p => p.Email.Equals(email));
         }
 
-        public static async void Add(this AppealRepository repository, Appeal appeal, string nameClassAppeal,
+        public static async Task Add(this AppealRepository repository, Appeal appeal, string nameClassAppeal,
             string nameSubtypeAppeal, AppDbContext context)
         {
             var classAppealRepository = RepositoryFactory<AppealClass>.Create(context);

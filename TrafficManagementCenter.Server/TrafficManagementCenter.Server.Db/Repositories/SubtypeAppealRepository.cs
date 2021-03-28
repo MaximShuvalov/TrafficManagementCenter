@@ -25,13 +25,13 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             return _context.SubtypeAppeals.Include(p => p.Type);
         });
 
-        public void Add(SubtypeAppeal entity)
+        public async Task Add(SubtypeAppeal entity) => await Task.Run(() =>
         {
             if (entity is null)
                 throw new ArgumentException("SubtypeAppeal is null");
             _context.SubtypeAppeals.Add(entity);
             _context.SaveChanges();
-        }
+        });
 
         public void Delete(SubtypeAppeal entity)
         {
