@@ -58,7 +58,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 name: "FK_Appeal_ClassAppeal_ClassAppealId",
                 table: "Appeal",
                 column: "ClassAppealId",
-                principalTable: "ClassAppeal",
+                principalTable: "AppealClass",
                 principalColumn: "Key",
                 onDelete: ReferentialAction.Cascade);
 
@@ -123,7 +123,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 name: "FK_Appeal_ClassAppeal_ClassAppealKey",
                 table: "Appeal",
                 column: "ClassAppealKey",
-                principalTable: "ClassAppeal",
+                principalTable: "AppealClass",
                 principalColumn: "Key",
                 onDelete: ReferentialAction.Restrict);
 

@@ -12,9 +12,9 @@ namespace Model
         public long SubtypeId { get; set; }
         public SubtypeAppeal Subtype { get; set; }
         
-        [ForeignKey("ClassAppeal")]
+        [ForeignKey("AppealClass")]
         public long ClassAppealId { get; set; }
-        public ClassAppeal ClassAppeal { get; set; }
+        public AppealClass AppealClass { get; set; }
         public string Email { get; set; }
         public string Text { get; set; }
         public string Attachment { get; set; }

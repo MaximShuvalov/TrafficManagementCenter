@@ -31,7 +31,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                     b.Property<string>("Attachment")
                         .HasColumnType("text");
 
-                    b.Property<int>("ClassAppeal")
+                    b.Property<int>("AppealClass")
                         .HasColumnType("integer");
 
                     b.Property<string>("Email")

@@ -4,7 +4,7 @@ using TrafficManagementCenter.Server.Db.Repositories;
 
 namespace TrafficManagementCenter.Server.Db.DI
 {
-    public static class DipendencyInjection
+    public static class DependencyInjection
     {
         public static void AddRepositories(this IServiceCollection services)
         {

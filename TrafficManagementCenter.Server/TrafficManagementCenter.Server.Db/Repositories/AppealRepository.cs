@@ -17,13 +17,13 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             _context = context;
         }
 
-        public Appeal Get(long id) => _context.Appeal.Include(p => p.ClassAppeal)
+        public Appeal Get(long id) => _context.Appeal.Include(p => p.AppealClass)
             .Include(o => o.Subtype)
             .FirstOrDefault(p => p.Key.Equals(id));
 
         public async Task<IEnumerable<Appeal>> GetEntities() => await Task.Run(() =>
         {
-            return _context.Appeal.Include(p => p.ClassAppeal)
+            return _context.Appeal.Include(p => p.AppealClass)
             .Include(o => o.Subtype);
         });
 

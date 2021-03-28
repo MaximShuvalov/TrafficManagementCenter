@@ -2,7 +2,7 @@
 
 namespace Model
 {
-    public class ClassAppeal
+    public class AppealClass
     {
         [Key]
         public long Key {get;set;}

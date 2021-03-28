@@ -49,7 +49,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                     b.ToTable("Appeal");
                 });
 
-            modelBuilder.Entity("Model.ClassAppeal", b =>
+            modelBuilder.Entity("Model.AppealClass", b =>
                 {
                     b.Property<long>("Key")
                         .ValueGeneratedOnAdd()
@@ -61,7 +61,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
 
                     b.HasKey("Key");
 
-                    b.ToTable("ClassAppeal");
+                    b.ToTable("AppealClass");
                 });
 
             modelBuilder.Entity("Model.SubtypeAppeal", b =>
@@ -107,7 +107,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
 
             modelBuilder.Entity("Model.Appeal", b =>
                 {
-                    b.HasOne("Model.ClassAppeal", "ClassAppeal")
+                    b.HasOne("Model.AppealClass", "AppealClass")
                         .WithMany()
                         .HasForeignKey("ClassAppealId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -119,7 +119,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ClassAppeal");
+                    b.Navigation("AppealClass");
 
                     b.Navigation("Subtype");
                 });

@@ -151,12 +151,12 @@ namespace TrafficManagementCenter.Server.Db.Tests
         [Explicit("Интеграционный")]
         public async void GetAllClassAppealsTest()
         {
-            var classAppeal = new ClassAppeal()
+            var classAppeal = new AppealClass()
             {
                 Name = "Замечание"
             };
 
-            var repos = RepositoryFactory<ClassAppeal>.Create(new AppDbContext());
+            var repos = RepositoryFactory<AppealClass>.Create(new AppDbContext());
             
             repos.Add(classAppeal);
             
@@ -184,7 +184,7 @@ namespace TrafficManagementCenter.Server.Db.Tests
             Assert.True(receivedAppeal.Key.Equals(appeal2.Key));
             Assert.True(receivedAppeal.Email.Equals(appeal2.Email));
             Assert.True(receivedAppeal.Subtype.Name.Equals(appeal2.Subtype.Name));
-            Assert.True(receivedAppeal.ClassAppeal.Name.Equals(appeal2.ClassAppeal.Name));
+            Assert.True(receivedAppeal.AppealClass.Name.Equals(appeal2.AppealClass.Name));
 
             repos1.Delete(appeal2);
         }

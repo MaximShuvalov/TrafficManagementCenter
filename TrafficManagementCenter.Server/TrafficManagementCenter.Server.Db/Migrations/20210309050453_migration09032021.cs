@@ -7,7 +7,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "ClassAppeal",
+                name: "AppealClass",
                 table: "Appeal",
                 type: "integer",
                 nullable: false,
@@ -17,7 +17,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "ClassAppeal",
+                name: "AppealClass",
                 table: "Appeal");
         }
     }

@@ -29,7 +29,7 @@ namespace TrafficManagementCenter.Server.Db.Extensions
         public async static void Add(this AppealRepository repository, Appeal appeal, string nameClassAppeal,
             string nameSubtypeAppeal, AppDbContext context)
         {
-            var classAppealRepository = RepositoryFactory<ClassAppeal>.Create(context);
+            var classAppealRepository = RepositoryFactory<AppealClass>.Create(context);
             var subtypeAppealRepository = RepositoryFactory<SubtypeAppeal>.Create(context);
 
             var classAppeal = (await classAppealRepository.GetEntities()).FirstOrDefault(p => p.Name.Equals(nameClassAppeal));

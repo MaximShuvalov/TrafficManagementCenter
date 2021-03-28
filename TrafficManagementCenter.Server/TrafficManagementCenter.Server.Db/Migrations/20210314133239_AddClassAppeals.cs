@@ -8,7 +8,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "ClassAppeal",
+                name: "AppealClass",
                 table: "Appeal");
 
             migrationBuilder.AddColumn<long>(
@@ -18,7 +18,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "ClassAppeal",
+                name: "AppealClass",
                 columns: table => new
                 {
                     Key = table.Column<long>(type: "bigint", nullable: false)
@@ -39,7 +39,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 name: "FK_Appeal_ClassAppeal_ClassAppealKey",
                 table: "Appeal",
                 column: "ClassAppealKey",
-                principalTable: "ClassAppeal",
+                principalTable: "AppealClass",
                 principalColumn: "Key",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -51,7 +51,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 table: "Appeal");
 
             migrationBuilder.DropTable(
-                name: "ClassAppeal");
+                name: "AppealClass");
 
             migrationBuilder.DropIndex(
                 name: "IX_Appeal_ClassAppealKey",
@@ -62,7 +62,7 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                 table: "Appeal");
 
             migrationBuilder.AddColumn<int>(
-                name: "ClassAppeal",
+                name: "AppealClass",
                 table: "Appeal",
                 type: "integer",
                 nullable: false,

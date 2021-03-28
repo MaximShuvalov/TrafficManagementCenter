@@ -7,7 +7,7 @@ using TrafficManagementCenter.Server.Db.Context;
 
 namespace TrafficManagementCenter.Server.Db.Repositories
 {
-    public class ClassAppealsRepository : IRepository<ClassAppeal>
+    public class ClassAppealsRepository : IRepository<AppealClass>
     {
         private readonly AppDbContext _context;
 
@@ -16,29 +16,29 @@ namespace TrafficManagementCenter.Server.Db.Repositories
             _context = context;
         }
 
-        public ClassAppeal Get(long id)
+        public AppealClass Get(long id)
         {
             throw new System.NotImplementedException();
         }
 
-        public async Task<IEnumerable<ClassAppeal>> GetEntities() => await Task.Run(() => { 
+        public async Task<IEnumerable<AppealClass>> GetEntities() => await Task.Run(() => { 
             return _context.ClassAppeal; 
             });
 
-        public void Add(ClassAppeal entity)
+        public void Add(AppealClass entity)
         {
             if (entity is null)
-                throw new ArgumentException("ClassAppeal is null");
+                throw new ArgumentException("AppealClass is null");
             if (_context.ClassAppeal.Contains(entity))
                 return;
             _context.ClassAppeal.Add(entity);
             _context.SaveChanges();
         }
 
-        public void Delete(ClassAppeal entity)
+        public void Delete(AppealClass entity)
         {
             if (entity is null)
-                throw new ArgumentException("ClassAppeal is null");
+                throw new ArgumentException("AppealClass is null");
             _context.ClassAppeal.Remove(entity);
             _context.SaveChanges();
         }
