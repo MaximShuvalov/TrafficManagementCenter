@@ -31,6 +31,7 @@ namespace TrafficManagementCenter.Server.Db.Repositories
         {
             if (entity is null)
                 throw new ArgumentException("Appeal is null");
+            entity.DateCreate = DateTime.Now;
             _context.Appeal.Add(entity);
             _context.SaveChanges();
         });
