@@ -28,7 +28,7 @@ namespace TrafficManagementCenter.Server
             services.AddDbContext<AppDbContext>(
             options => options.UseNpgsql(connectionDb)
             );
-            services.AddRepositories();
+            services.AddDb();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

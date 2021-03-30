@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Model;
 
 namespace TrafficManagementCenter.Server.Db.Context
@@ -20,9 +23,11 @@ namespace TrafficManagementCenter.Server.Db.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //todo mshuvalov: забирать из конфига
-            optionsBuilder.UseNpgsql(
-                "Server=127.0.0.1;Port=5433; Database=team1; Username=t1; Password=admin;");
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
+                .AddJsonFile("appsettings.json", false)
+                .Build();
+            optionsBuilder.UseNpgsql(config.GetConnectionString("ConnectionDb"));
         }
 
         public DbSet<Appeal> Appeal { get; set; }
