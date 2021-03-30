@@ -10,8 +10,8 @@ using TrafficManagementCenter.Server.Db.Context;
 namespace TrafficManagementCenter.Server.Db.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210330160915_addDateCreatedAppeal")]
-    partial class addDateCreatedAppeal
+    [Migration("20210330162506_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

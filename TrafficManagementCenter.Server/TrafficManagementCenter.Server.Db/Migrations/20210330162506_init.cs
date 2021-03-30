@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace TrafficManagementCenter.Server.Db.Migrations
 {
-    public partial class RenameModel : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -65,7 +66,8 @@ namespace TrafficManagementCenter.Server.Db.Migrations
                     ClassAppealId = table.Column<long>(type: "bigint", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: true),
                     Text = table.Column<string>(type: "text", nullable: true),
-                    Attachment = table.Column<string>(type: "text", nullable: true)
+                    Attachment = table.Column<string>(type: "text", nullable: true),
+                    DateCreate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },
                 constraints: table =>
                 {
